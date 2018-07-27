@@ -1,0 +1,436 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <title>Prata da Casa - Programa de Relacionamento</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="description" content="">  
+	<!-- Web Fonts  -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+	<!-- Vendor CSS -->
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.css" />
+	<link rel="stylesheet" href="assets/vendor/magnific-popup/magnific-popup.css" />
+	
+	<!-- Specific Page Vendor CSS -->		
+	<link rel="stylesheet" href="assets/vendor/jquery-ui/jquery-ui.css" />
+	<link rel="stylesheet" href="assets/vendor/jquery-ui/jquery-ui.theme.css" />
+	<link rel="stylesheet" href="assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
+	<link rel="stylesheet" href="assets/vendor/morris.js/morris.css" />
+	
+	
+	
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="assets/stylesheets/theme.css" />
+	<!-- Theme Custom CSS -->
+	<link rel="stylesheet" href="assets/stylesheets/theme-custom.css">
+	<!-- Head Libs -->
+	<script src="assets/vendor/modernizr/modernizr.js"></script>
+	<script src="assets/vendor/style-switcher/style.switcher.localstorage.js"></script>
+	<link rel="stylesheet" href="bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css"/>
+	
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.css">
+	
+		
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css" />
+    <link rel="stylesheet" href="bower_components/angular-datepicker/dist/angular-datepicker.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+	
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/images/favicons/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicons/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicons/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicons/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="assets/images/favicons/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="assets/images/favicons/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="assets/images/favicons/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="assets/images/favicons/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="assets/images/favicons/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="assets/images/favicons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="assets/images/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="assets/images/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="assets/images/favicons/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="&nbsp;"/>
+	<meta name="msapplication-TileColor" content="#" />
+	<meta name="msapplication-TileImage" content="assets/images/favicons/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="assets/images/favicons/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="assets/images/favicons/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="assets/images/favicons/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="assets/images/favicons/mstile-310x310.png" />		
+	
+	
+  </head>
+  <body style="background: #1d2f60!important;">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <!--<div class="header">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#/">teste</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#/">Home</a></li>
+              <li><a ng-href="#/about">About</a></li>
+              <li><a ng-href="#/">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>-->
+	
+
+		<section class="body-sign" style="max-width: 800px;">
+			<div class="center-sign">
+				<a href="../../index.html" class="logo pull-left">
+					<img src="assets/images/logo4.png" height="54" alt="Porto Admin" />
+				</a>
+
+				<div class="panel panel-sign">
+					<div class="panel-title-sign mt-xl text-right">
+						<h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Cadastrar</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row mb-sm">
+							<div class="col-sm-4">
+								<div class="form-group">
+									<label>Nome</label>
+									<input name="nome" type="text" id="name" class="form-control" />
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<label>Sobrenome</label>
+									<input name="sobrenome" type="text" id="sobrenome" class="form-control " />
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<label>Data Nascimento</label>
+									<input name="data_nascimento" id="data_nascimento" type="text" class="form-control ">
+								</div>
+							</div>
+						</div>
+						<div class="row mb-sm">
+							<div class="col-sm-12 form-group">
+								<label>E-mail</label>
+								<input name="email" type="email" id="email" class="form-control " />
+							</div>
+						</div>
+						<div class="row mb-sm">
+							<div class="col-sm-12">
+								<label>Empresa</label>
+								<input name="empresa" type="text" id="empresa" class="form-control " />
+							</div>
+						</div>
+						<div class="row mb-sm">
+							<div class="col-sm-6 form-group ">
+								<label>CPF/CNPJ</label>
+								<input name="cpf"  type="text" id="cpf" class="form-control " />
+							</div>
+							<div class="col-sm-6 form-group ">
+								<label>RG</label>
+								<input name="rg" type="text" id="rg" class="form-control " />
+							</div>
+						</div>
+						
+						<div class="row mb-sm">
+							<div class="col-sm-7 form-group ">
+								<div class="form-group ">
+									<label>Endere&ccedilo</label>
+									<input name="endereco" type="text" id="endereco" class="form-control " />
+								</div>							
+							</div>
+							<div class="col-sm-2 form-group ">
+								<div class="form-group ">
+									<label>N&uacutemero</label>
+									<input name="numero" type="text" id="numero" class="form-control " />
+								</div>							
+							</div>
+							<div class="col-sm-3 form-group ">
+								<div class="form-group ">
+									<label>CEP</label>
+									<input name="cep" type="text" ui-br-cep-mask id="cep" class="form-control " />
+								</div>							
+							</div>								
+						</div>
+						
+						<div class="row mb-sm">
+							<div class="col-sm-4 form-group ">
+								<div class="form-group ">
+									<label>Bairro</label>
+									<input name="bairro" type="text" id="bairro" class="form-control " />
+								</div>						
+							</div>
+							<div class="col-sm-3 form-group ">
+								<div class="form-group ">
+									<label>Cidade</label>
+									<input name="cidade" type="text" id="cidade" class="form-control " />
+								</div>							
+							</div>
+							<div class="col-sm-2 form-group ">
+								<div class="form-group ">
+									<label>UF</label>
+									<input name="uf" type="text" id="uf" class="form-control " />
+								</div>							
+							</div>
+							<div class="col-sm-3 form-group ">
+								<div class="form-group ">
+									<label>Telefone 1</label>
+									<input name="telefone1" type="text" id="telefone1" class="form-control " />
+								</div>								
+							</div>								
+						</div>						
+						
+						<div class="row mb-sm">
+							<div class="col-sm-6 form-group ">
+								<div class="form-group ">
+									<label>Senha</label>
+									<input name="senha" type="password" id="senha" class="form-control " />
+								</div>						
+							</div>
+							<div class="col-sm-6 form-group ">
+								<div class="form-group ">
+									<label>Confirmar Senha</label>
+									<input name="senhaConfirmar" type="password" id="senhaRepetir" class="form-control " />
+								</div>							
+							</div>							
+						</div>							
+						<div class="row">
+							<div class="col-sm-8">
+								<div class="checkbox-custom checkbox-default">
+									<input name="agreeterms" id="concordo" type="checkbox"/>
+									<label for="AgreeTerms">Concordo com os <a style="color: #337ab7;">Termos de Uso</a></label>
+								</div>
+							</div>
+							<div class="col-sm-12">								
+								<button  class="btn btn-primary center-block mt-lg" id="cadastrar">Cadastrar</button>
+							</div>
+						</div>
+							<span class="mt-lg  line-thru text-center text-uppercase">
+								<span>Ou</span>
+							</span>
+							<p class="text-center">Já tem uma conta?<a href="index.html" style="color: #337ab7;"> Entrar!</a></p>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+	<footer class="navbar-fixed-bottom">
+      <div class="container">
+        <p class="text-center" style="color:#fff;"><span class="glyphicon glyphicon-heart"></span> Desenvolvido por DNBProject</p>
+      </div>
+    </footer>
+
+   
+
+     
+	
+	<!-- Vendor -->
+		<script src="assets/vendor/jquery/jquery.js"></script>
+		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script src="assets/vendor/jquery-cookie/jquery-cookie.js"></script>
+		
+		<script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
+		<script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
+		<script src="assets/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+		<script src="assets/vendor/jquery-placeholder/jquery-placeholder.js"></script>
+		
+		<!-- Specific Page Vendor -->	
+		
+		<script src="assets/vendor/jquery-ui/jquery-ui.js"></script>
+		<script src="assets/vendor/jqueryui-touch-punch/jqueryui-touch-punch.js"></script>
+		<script src="assets/vendor/jquery-appear/jquery-appear.js"></script>	
+		<script src="assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+		<script src="assets/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.js"></script>
+		<script src="assets/vendor/flot/jquery.flot.js"></script>
+		<script src="assets/vendor/flot.tooltip/flot.tooltip.js"></script>	
+		<script src="assets/vendor/flot/jquery.flot.pie.js"></script>
+		<script src="assets/vendor/flot/jquery.flot.categories.js"></script>
+		<script src="assets/vendor/flot/jquery.flot.resize.js"></script>
+		<script src="assets/vendor/jquery-sparkline/jquery-sparkline.js"></script>	
+		<script src="assets/vendor/raphael/raphael.js"></script>
+		<script src="assets/vendor/morris.js/morris.js"></script>	
+		<script src="assets/vendor/gauge/gauge.js"></script>
+		<script src="assets/vendor/snap.svg/snap.svg.js"></script>
+		<script src="assets/vendor/liquid-meter/liquid.meter.js"></script>	
+		<script src="assets/vendor/jqvmap/jquery.vmap.js"></script>	
+		<script src="assets/vendor/jqvmap/data/jquery.vmap.sampledata.js"></script>	
+		<script src="assets/vendor/jqvmap/maps/jquery.vmap.world.js"></script>	
+		<script src="assets/vendor/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
+		<script src="assets/vendor/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
+		<script src="assets/vendor/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
+		<script src="assets/vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>	
+		<script src="assets/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
+		<script src="assets/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>	
+		
+		<script src="assets/vendor/select2/js/select2.js"></script>
+		<script src="assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
+		<script src="assets/vendor/jquery-datatables/extras/TableTools/js/dataTables.tableTools.min.js"></script>
+		<script src="assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>	
+		<script src="assets/javascripts/mask.js"></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src="assets/javascripts/theme.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="assets/javascripts/theme.custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="assets/javascripts/theme.init.js"></script>
+		
+		<script src="assets/javascripts/notify.js"></script>
+		
+	<script>	
+	$(document).ready(function(){	
+			
+			 $("#concordo").val(0);
+	
+			$("#cadastrar").click(function(){
+			var erro = '';
+			if($('#name').val()==''){
+				erro += 'Preencher nome '+'\n';
+			}
+			if($('#sobrenome').val()==''){
+				erro += 'Preencher sobrenome '+'\n';
+			}			
+			if($('#email').val()==''){
+				erro += 'Preencher e-mail '+'\n';
+			}
+			if($('#empresa').val()==''){
+				erro += 'Preencher empresa '+'\n';
+			}
+			if($('#data_nascimento').val()==''){
+				erro += 'Preencher Data Nascimento '+'\n';
+			}
+			if($('#cpf').val()==''){
+				erro += 'Preencher CPF '+'\n';
+			}
+			if($('#rg').val()==''){
+				erro += 'Preencher RG '+'\n';
+			}
+			if($('#telefone1').val()==''){
+				erro += 'Preencher Telefone 1 '+'\n';
+			}			
+			if($('#cep').val()==''){
+				erro += 'Preencher CEP '+'\n';
+			}
+			if($('#endereco').val()==''){
+				erro += 'Preencher Endereco '+'\n';
+			}
+			if($('#numero').val()==''){
+				erro += 'Preencher Numero '+'\n';
+			}
+			if($('#bairro').val()==''){
+				erro += 'Preencher Bairro '+'\n';
+			}
+			if($('#cidade').val()==''){
+				erro += 'Preencher Cidade '+'\n';
+			}
+			if($('#uf').val()==''){
+				erro += 'Preencher UF '+'\n';
+			}
+			if($('#senha').val()==''){
+				erro += 'Preencher Senha '+'\n';
+			}
+			if($('#senhaRepetir').val()==''){
+				erro += 'Preencher repetir Senha '+'\n';
+			}
+			if($('#senhaRepetir').val()!=$('#senha').val()){
+				erro += 'As Senhas devem ser iguais '+'\n';
+			}
+			if($('#concordo').val()==0){
+				erro += 'Concordar com os termos '+'\n';
+			}
+
+			if(erro!=''){
+				$.notify(erro, "error");
+			}else{
+				var user = {};
+				user.nome = $('#name').val();
+				user.email = $('#email').val();
+				user.empresa = $('#empresa').val();
+				user.data_nascimento = $('#data_nascimento').val();
+				user.cpf = $('#cpf').val();
+				user.rg = $('#rg').val();
+				user.telefone = $('#telefone1').val();
+				user.celular = $('#telefone2').val();
+				user.cep = $('#cep').val();
+				user.endereco = $('#endereco').val();
+				user.numero = $('#numero').val();
+				user.bairro = $('#bairro').val();
+				user.cidade = $('#cidade').val();
+				user.uf = $('#uf').val();
+				user.senha = $('#senha').val();				
+				var data={"user":user};
+				var settings = {
+				  "async": true,
+				  "crossDomain": true,
+				  "url": 'http://ec2-54-233-210-28.sa-east-1.compute.amazonaws.com:9002/saveEspecPortal',
+				  "method": "POST",
+				  "headers": {
+					"content-type": "application/json"    
+				  },
+				  "processData": false,
+				  "data": JSON.stringify(data)
+				  }
+
+				$.ajax(settings).done(function (response) {
+				   console.log(response);
+				   if(response.type==1){
+						$.notify(response.msg, "error");			
+					}else{
+						console.log('eai:')
+						$.notify("Cadastro efetuado com sucesso, aguardando aceite das empresas.", "success");
+						window.location.href = 'index.html';
+					}
+				});				
+			}
+			
+		});	
+	
+		$("#concordo").click(function(){			
+			if($('#concordo').val()==0){
+				 $("#concordo").val(1);
+			}else{
+				 $("#concordo").val(0);
+			}			
+		});		
+		
+		
+		jQuery(function($){
+		   $("#data_nascimento").mask("99/99/9999");
+		   $("#telefone1").mask("(99)99999999?9");
+		   $("#telefone2").mask("(99)99999999?9");
+		   $("#cep").mask("99999-999");
+	
+		});
+	
+	});	
+	</script>
+		
+		
+</body>
+</html>

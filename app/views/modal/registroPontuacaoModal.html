@@ -1,0 +1,43 @@
+<div class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+				<button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Registro das pontuações</h4>
+            </div>
+           <table class="table table-bordered table-striped" show-filter="true">
+				<thead>
+					<tr>
+						<td class="col-xs-4">
+							<a  ng-click="sortType = 'nome'; sortReverse = !sortReverse">
+							Pontos
+							<span ng-show="sortType == 'nome'" class="fa fa-caret-down"></span>
+						</td>
+						<td class="col-xs-4 ">
+							<a  ng-click="sortType = 'empresa'; sortReverse = !sortReverse">
+							Data
+							<span ng-show="sortType == 'empresa'" class="fa fa-caret-down"></span>
+						</td>
+						<td class="col-xs-4 col-sm-2">
+							<a  ng-click="sortType = 'cpf'; sortReverse = !sortReverse">
+							Descrição
+							<span ng-show="sortType == 'cpf'" class="fa fa-caret-down"></span>
+						</td>												
+					</tr>
+				</thead>
+				<tr ng-repeat="user in especificadores | orderBy:sortType:sortReverse| filter:searchFish as filtered">
+					<td class="col-xs-4 col-sm-2">
+						{{user.nome}}</td>
+					<td class="col-xs-4 col-sm-2">
+						{{user.empresa}}</td>
+					<td class="col-xs-4 col-sm-2">
+						{{user.cpf}}</td>
+				</tr>
+			</table>
+            <div class="modal-footer">
+				<button type="button" ng-click="close(true)" class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
+                <button type="button" ng-click="close(false)" class="btn btn-default " data-dismiss="modal">Cancelar</button>                
+            </div>
+        </div>
+    </div>
+</div>

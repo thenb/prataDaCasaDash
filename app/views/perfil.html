@@ -1,0 +1,305 @@
+<header class="page-header">
+	<h2>Perfil</h2>						
+</header>
+
+<div class="row" ng-controller="PerfilCtrl">
+	<div class="col-lg-12 col-md-12">
+		<section class="panel panel-featured">
+			<header class="panel-heading">
+				<h2 class="panel-title"><i class="fa fa fa-user-circle-o" aria-hidden="true"></i> Perfil</h2>
+			</header>
+			<div class="panel-body">
+				<div class=" col-lg-4 text-center">
+					<div class="thumb-info mb-md">
+						<img src="assets/images/!logged-user.jpg" ng-if="!perfilUrl" class="rounded img-responsive" alt="John Doe">
+						<img src="{{perfilUrl}}" ng-if="perfilUrl" class="rounded img-responsive" alt="John Doe">
+					</div>		
+					
+					<!--
+					<hr class="dotted short">
+					<div class="widget-toggle-expand mb-md">
+						<div class="widget-header">
+							<h6>Perfil Completo</h6>												
+						</div>
+					</div>
+					<hr class="dotted short">
+					<div class="social-icons-list">
+						<a rel="tooltip" data-placement="bottom" target="_blank" href="http://www.facebook.com" data-original-title="Facebook"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+						<a rel="tooltip" data-placement="bottom" href="http://www.twitter.com" data-original-title="Twitter"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+						<a rel="tooltip" data-placement="bottom" href="http://www.linkedin.com" data-original-title="Linkedin"><i class="fa fa-linkedin"></i><span>Linkedin</span></a>
+					</div>
+					-->
+				</div>																		
+				<div class=" col-lg-8">
+				<form class="form-horizontal"  name="formPerfil">
+					<div class="tabs" style="margin-bottom: 0px;">
+						<ul class="nav nav-tabs tabs-primary">
+							<li class="active">
+								<a href="pages-user-profile.html#dadosPessoais" data-toggle="tab"><i class="fa fa fa-user-circle-o" aria-hidden="true"></i> Informações Gerais</a>
+							</li>
+							<li >
+								<a href="pages-user-profile.html#endereco" data-toggle="tab"><i class="fa fa-address-card-o" aria-hidden="true"></i> Endereço</a>
+							</li>
+							<li ng-if="user.login.id_tipo_login==3">
+								<a href="pages-user-profile.html#financeiro" data-toggle="tab"><i class="fa fa-money" aria-hidden="true"></i> Financeiro</a>
+							</li>
+							<li >
+								<a href="pages-user-profile.html#senha" data-toggle="tab"><i class="fa fa-key Senha" aria-hidden="true"></i> Senha</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div id="dadosPessoais" class="tab-pane active">
+								<fieldset>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="nome">Nome:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.nome.$invalid && formPerfil.nome.$dirty && submited)|| (submited && formPerfil.nome.$pristine),
+											'has-success' : (!formPerfil.nome.$invalid && formPerfil.nome.$dirty)}">
+												<input type="text" class="form-control" id="nome" name="nome" ng-model="perfil.nome" required>
+												<span ng-show="(formPerfil.nome.$invalid && formPerfil.nome.$dirty && submited) || formPerfil.nome.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formPerfil.nome.$error.required">Nome é Obrigatório.</p>
+												</span>
+											</div>	
+										</div>
+									</div>
+									<div class="form-group" ng-show="user.login.id_tipo_login==4 || user.login.id_tipo_login==3">
+										<label class="col-md-3 control-label" for="nome">Sobrenome:</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="sobrenome" name="sobrenome" ng-model="perfil.sobrenome">
+										</div>	
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="nome">Foto do Perfil:</label>
+										<div class="col-md-8">
+											<input type="file" file-upload/>
+										</div>
+									</div>
+									<div class="form-group" ng-if="user.login.id_tipo_login==3">
+										<label class="col-md-3 control-label" for="empresa">Empresa:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.empresa.$invalid && formPerfil.empresa.$dirty && submited)|| (submited && formPerfil.empresa.$pristine),
+											'has-success' : (!formPerfil.empresa.$invalid && formPerfil.empresa.$dirty)}">
+												<input type="text" class="form-control" id="empresa" name="empresa" ng-model="perfil.empresa" required>
+												<span ng-show="(formPerfil.empresa.$invalid && formPerfil.empresa.$dirty && submited) || formPerfil.empresa.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formPerfil.empresa.$error.required">Empresa é Obrigatório.</p>
+												</span>
+											</div>	
+										</div>
+									</div>
+									<div class="form-group" ng-if="user.login.id_tipo_login==2">
+										<label class="col-md-3 control-label" for="segmento">Segmento:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.segmento.$invalid && formPerfil.segmento.$dirty && submited)|| (submited && formPerfil.segmento.$pristine),
+											'has-success' : (!formPerfil.segmento.$invalid && formPerfil.segmento.$dirty)}">
+												<input type="text" class="form-control" id="segmento" name="segmento" ng-model="perfil.segmento" required>
+												<span ng-show="(formPerfil.segmento.$invalid && formPerfil.segmento.$dirty && submited) || formPerfil.segmento.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formPerfil.segmento.$error.required">Segmento é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group" ng-if="user.login.id_tipo_login==2">
+										<label class="col-md-3 control-label" for="responsavel">Responsável:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.responsavel.$invalid && formPerfil.responsavel.$dirty && submited)|| (submited && formPerfil.responsavel.$pristine),
+											'has-success' : (!formPerfil.responsavel.$invalid && formPerfil.responsavel.$dirty)}">
+												<input type="text" class="form-control" id="responsavel" name="responsavel" ng-model="perfil.responsavel" required>
+												<span ng-show="(formPerfil.responsavel.$invalid && formPerfil.responsavel.$dirty && submited) || formPerfil.responsavel.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formPerfil.responsavel.$error.required">Responsável é Obrigatório.</p>
+												</span>
+											</div>
+										</div>															
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="email">Email:</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="email" name="email" ng-model="login.email" ng-disabled="true">
+										</div>
+									</div>
+									<div class="form-group" ng-if="user.login.id_tipo_login==3 || user.login.id_tipo_login==4">
+										<label class="col-md-3 control-label" for="data_nascimento">Nascimento:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.data_nascimento.$invalid && formPerfil.data_nascimento.$dirty && submited)|| (submited && formPerfil.data_nascimento.$pristine),
+											'has-success' : (!formPerfil.data_nascimento.$invalid && formPerfil.data_nascimento.$dirty)}">
+												<input type="date" class="form-control" id="data_nascimento" name="data_nascimento" ng-model="perfil.data_nascimento" required>
+												<span ng-show="(formPerfil.data_nascimento.$invalid && formPerfil.data_nascimento.$dirty && submited) || formPerfil.data_nascimento.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formPerfil.data_nascimento.$error.required">Data de nascimento é Obrigatório.</p>
+													<p class="error-msg" ng-show="formPerfil.data_nascimento.$error.date">Data de nascimento é inválida.</p>
+												</span>
+											</div>	
+										</div>
+									</div>
+									<div class="form-group" ng-if="user.login.id_tipo_login==3">
+										<label class="col-md-3 control-label" for="cpf">CPF:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.cpf.$invalid && formPerfil.cpf.$dirty && submited)|| (submited && formPerfil.cpf.$pristine),
+											'has-success' : (!formPerfil.cpf.$invalid && formPerfil.cpf.$dirty)}">
+												<input type="text" class="form-control" id="cpf" name="cpf" ng-model="perfil.cpf" required>
+												<span ng-show="(formPerfil.cpf.$invalid && formPerfil.cpf.$dirty && submited) || formPerfil.cpf.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formPerfil.cpf.$error.required">CPF é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group" ng-if="user.login.id_tipo_login==3">
+										<label class="col-md-3 control-label" for="rg">RG:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.rg.$invalid && formPerfil.rg.$dirty && submited)|| (submited && formPerfil.rg.$pristine),
+											'has-success' : (!formPerfil.rg.$invalid && formPerfil.rg.$dirty)}">
+												<input type="text" class="form-control" id="rg" name="rg" ng-model="perfil.rg" required>
+												<span ng-show="(formPerfil.rg.$invalid && formPerfil.rg.$dirty && submited) || formPerfil.rg.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formPerfil.rg.$error.required">RG é Obrigatório.</p>
+												</span>
+											</div>	
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="telefone">Telefone 1:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.telefone.$invalid && formPerfil.telefone.$dirty && submited)|| (submited && formPerfil.telefone.$pristine),
+											'has-success' : (!formPerfil.telefone.$invalid && formPerfil.telefone.$dirty)}">
+												<input type="text" class="form-control" id="telefone" name="telefone" mask='(99) 99999999?9' ng-model="perfil.telefone" required>
+												<span ng-show="(formPerfil.telefone.$invalid && formPerfil.telefone.$dirty && submited) || formPerfil.telefone.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formPerfil.telefone.$error.required">Telefone 1 é Obrigatório.</p>
+													<p class="error-msg" ng-show="formPerfil.telefone.$error.mask">Telefone 1 Inválido.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="celular">Telefone 2:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.celular.$invalid && formPerfil.celular.$dirty && submited)|| (submited && formPerfil.celular.$pristine),
+											'has-success' : (!formPerfil.celular.$invalid && formPerfil.celular.$dirty)}">
+												<input type="text" class="form-control" id="celular" name="celular" mask='(99) 99999999?9' ng-model="perfil.celular">
+												<span ng-show="(formPerfil.celular.$invalid && formPerfil.celular.$dirty && submited) || formPerfil.celular.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formPerfil.celular.$error.mask">Telefone 2 Inválido.</p>
+												</span>
+											</div>	
+										</div>
+									</div>
+									<div class="form-group" ng-if="user.login.id_tipo_login==3">
+										<label class="col-md-3 control-label" for="profissao">Profissão:</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="profissao" name="profissao" ng-model="perfil.profissao">
+										</div>
+									</div>
+								</fieldset>														
+							</div>
+							<div id="endereco" class="tab-pane">			
+								<fieldset>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Cep:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.cep.$invalid && formPerfil.cep.$dirty && submited)|| (submited && formPerfil.cep.$pristine),
+											'has-success' : (!formPerfil.cep.$invalid && formPerfil.cep.$dirty)}">
+												<input type="text" class="form-control" id="cep" name="cep" mask='99999-999'  ng-model="perfil.cep" required>
+												<span ng-show="(formPerfil.cep.$invalid && formPerfil.cep.$dirty && submited) || formPerfil.cep.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formPerfil.cep.$error.required">Cep é Obrigatório.</p>
+														<p class="error-msg" ng-show="formPerfil.cep.$error.mask">Cep é inválido.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Endereço:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.endereco.$invalid && formPerfil.endereco.$dirty && submited)|| (submited && formPerfil.endereco.$pristine),
+											'has-success' : (!formPerfil.endereco.$invalid && formPerfil.endereco.$dirty)}">
+												<input type="text" class="form-control" id="endereco" name="endereco"  ng-model="perfil.endereco" required>
+												<span ng-show="(formPerfil.endereco.$invalid && formPerfil.endereco.$dirty && submited) || formPerfil.endereco.$pristine && submited " class="ng-hide">
+															<p class="error-msg" ng-show="formPerfil.endereco.$error.required">Endereço é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>						
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Número:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.numero.$invalid && formPerfil.numero.$dirty && submited)|| (submited && formPerfil.numero.$pristine),
+											'has-success' : (!formPerfil.numero.$invalid && formPerfil.numero.$dirty)}">
+												<input type="text" class="form-control" id="numero"  name="numero" ui-number-mask="0"  ng-model="perfil.numero" required>
+											<span ng-show="(formPerfil.numero.$invalid && formPerfil.numero.$dirty && submited) || formPerfil.numero.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formPerfil.numero.$error.required">Número é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Bairro:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.bairro.$invalid && formPerfil.bairro.$dirty && submited)|| (submited && formPerfil.bairro.$pristine),
+											'has-success' : (!formPerfil.bairro.$invalid && formPerfil.bairro.$dirty)}">
+												<input type="text" class="form-control" id="bairro" name="bairro" ng-model="perfil.bairro" required>
+												<span ng-show="(formPerfil.bairro.$invalid && formPerfil.bairro.$dirty && submited) || formPerfil.bairro.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formPerfil.bairro.$error.required">Bairro é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Cidade:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.cidade.$invalid && formPerfil.cidade.$dirty && submited)|| (submited && formPerfil.cidade.$pristine),
+											'has-success' : (!formPerfil.cidade.$invalid && formPerfil.cidade.$dirty)}">
+												<input type="text" class="form-control" id="cidade"  name="cidade" ng-model="perfil.cidade" required>
+												<span ng-show="(formPerfil.cidade.$invalid && formPerfil.cidade.$dirty && submited) || formPerfil.cidade.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formPerfil.cidade.$error.required">Cidade é Obrigatória.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">UF:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formPerfil.uf.$invalid && formPerfil.uf.$dirty && submited)|| (submited && formPerfil.cidade.$pristine),
+											'has-success' : (!formPerfil.uf.$invalid && formPerfil.uf.$dirty)}">
+												<input type="text" class="form-control" id="uf"  name="uf"  ng-model="perfil.uf" required>
+												<span ng-show="(formPerfil.uf.$invalid && formPerfil.uf.$dirty && submited) || formPerfil.uf.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formPerfil.uf.$error.required">UF é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>													
+								</fieldset>														
+							</div>												
+							<div id="financeiro" class="tab-pane" ng-show="user.login.id_tipo_login==3">																								
+								<fieldset>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="dados_bancarios">Dados Bancários</label>
+										<div class="col-md-8">
+											<textarea class="form-control" rows="5" id="dados_bancarios" name="dados_bancarios" ng-model="perfil.dados_bancarios"></textarea>
+										</div>
+									</div>	
+								</fieldset>
+							</div>												
+							<div id="senha" class="tab-pane">																						
+								<fieldset>
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="senha">Nova Senha:</label>
+										<div class="col-md-7">
+											<input type="password" class="form-control" id="senha" name="senha" ng-model="login.senha">																
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="repetir_senha">Repetir Nova Senha:</label>
+										<div class="col-md-7">
+											<input type="password" class="form-control" id="repetir_senha" name="repetir_senha" ng-model="login.repetir_senha">
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+					</div>
+					</form>
+					<div class="row" style="padding-top: 15px;">
+							<button type="button" ng-click="salvar(formPerfil)" class="mb-xs mt-xs mr-xs btn btn-primary pull-right">Salvar</button>
+							<button type="button" ng-click="cancelar()" class="mb-xs mt-xs mr-xs btn btn-default pull-right" >Cancelar</button>
+					</div>
+				</div>									
+			</div>
+			<div class="panel-footer"></div>
+		</section>
+	</div>	
+</div>
+

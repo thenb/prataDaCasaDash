@@ -1,0 +1,240 @@
+<header class="page-header ">
+	<h2>{{operacao}} Empresa</h2>	
+</header>
+<!-- start: page -->
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12 col-md-12">
+			<section class="panel">
+				<header class="panel-heading panel-featured">
+					<h2 class="panel-title"><i class="fa fa-building" aria-hidden="true"></i> {{operacao}} Empresa</h2>
+				</header>
+				<div class="panel-body">										
+						<form class="form-horizontal form-bordered" name="formEmpre">
+						<div class="tabs noPaddingBot" >
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a href="ui-elements-tabs.html#dadosEmpresa" data-toggle="tab"><i class="fa fa-address-book" aria-hidden="true"></i></i>  Dados Empresa</a>
+								</li>
+								<li>
+									<a href="ui-elements-tabs.html#endereco" data-toggle="tab"><i class="fa fa-address-card" aria-hidden="true"></i></i>  Endereço</a>
+								</li>
+								<li>
+									<a href="ui-elements-tabs.html#pontuacao" data-toggle="tab" ng-show="(user.login.id_tipo_login==1 || user.login.id_tipo_login==2) && !novo"><i class="fa fa-star" aria-hidden="true"></i></i>  Pontuação</a>
+								</li>
+								<li >
+								<a href="pages-user-profile.html#senha" data-toggle="tab" ng-show="user.login.id_tipo_login==1 && !view && !novo"><i class="fa fa-key Senha" aria-hidden="true" ></i> Senha</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div id="dadosEmpresa" class="tab-pane active">
+									<div class="form-group">
+										<label class="col-md-3 control-label" >Nome:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.nome.$invalid && formEmpre.nome.$dirty && submited)|| (submited && formEmpre.nome.$pristine),
+											'has-success' : (!formEmpre.nome.$invalid && formEmpre.nome.$dirty)}">
+												<input type="text" class="form-control" id="nome" name="nome"  ng-model="empresa1.nome" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEmpre.nome.$invalid && formEmpre.nome.$dirty && submited) || formEmpre.nome.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.nome.$error.required">Nome é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Segmento:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.segmento.$invalid && formEmpre.segmento.$dirty && submited)|| (submited && formEmpre.segmento.$pristine),
+											'has-success' : (!formEmpre.segmento.$invalid && formEmpre.segmento.$dirty)}">
+												<input type="text" class="form-control" id="segmento" name="segmento" ng-model="empresa1.segmento" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEmpre.segmento.$invalid && formEmpre.segmento.$dirty && submited) || formEmpre.segmento.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.segmento.$error.required">Segmento é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" >Nome do Responsável:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.nomeUsuario.$invalid && formEmpre.nomeUsuario.$dirty && submited)|| (submited && formEmpre.nomeUsuario.$pristine),
+											'has-success' : (!formEmpre.nomeUsuario.$invalid && formEmpre.nomeUsuario.$dirty)}">
+												<input type="text" class="form-control" id="nomeUsuario" name="nomeUsuario"  ng-model="empresa1.nome_usuario" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEmpre.nomeUsuario.$invalid && formEmpre.nomeUsuario.$dirty && submited) || formEmpre.nomeUsuario.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.nomeUsuario.$error.required">Responsável é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">E-mail:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.email.$invalid && formEmpre.email.$dirty && submited)|| (submited && formEmpre.email.$pristine),
+											'has-success' : (!formEmpre.email.$invalid && formEmpre.email.$dirty)}">
+												<input type="text" class="form-control" id="email" name="email" ng-model="empresa1.email" ng-disabled="!novo || aprovar  || view" required>
+												<span ng-show="(formEmpre.email.$invalid && formEmpre.email.$dirty && submited) || formEmpre.email.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.email.$error.required">E-mail é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Telefone 1:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.telefone1.$invalid && formEmpre.telefone1.$dirty && submited)|| (submited && formEmpre.telefone1.$pristine),
+											'has-success' : (!formEmpre.telefone1.$invalid && formEmpre.telefone1.$dirty)}">
+												<input type="text" class="form-control" id="telefone1" name="telefone1" mask='(99) 99999999?9' ng-model="empresa1.telefone" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEmpre.telefone1.$invalid && formEmpre.telefone1.$dirty && submited) || formEmpre.telefone1.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.telefone1.$error.required">Telefone 1 é Obrigatório.</p>
+													<p class="error-msg" ng-show="formEmpre.telefone1.$error.mask">Telefone 1 Inválido.</p>
+												</span>
+											</div>
+										</div>
+									</div>	
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Telefone 2:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.telefone2.$invalid && formEmpre.telefone2.$dirty && submited)|| (submited && formEmpre.telefone2.$pristine),
+											'has-success' : (!formEmpre.telefone2.$invalid && formEmpre.telefone2.$dirty)}">
+												<input type="text" class="form-control" id="telefone2" name="telefone2" mask='(99) 99999999?9' ng-model="empresa1.celular" ng-disabled="aprovar  || view">
+												<span ng-show="(formEmpre.telefone2.$invalid && formEmpre.telefone2.$dirty && submited) || formEmpre.telefone2.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.telefone2.$error.mask">Telefone 2 Inválido.</p>
+												</span>
+											</div>	
+										</div>
+									</div>																								
+								</div>	
+								<div id="endereco" class="tab-pane">
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Cep:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.cep.$invalid && formEmpre.cep.$dirty && submited)|| (submited && formEmpre.cep.$pristine),
+											'has-success' : (!formEmpre.cep.$invalid && formEmpre.cep.$dirty)}">
+												<input type="text" class="form-control" id="cep" name="cep" mask='99999-999' ng-model="empresa1.cep" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEmpre.cep.$invalid && formEmpre.cep.$dirty && submited) || formEmpre.cep.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.cep.$error.required">Cep é Obrigatório.</p>
+													<p class="error-msg" ng-show="formEmpre.cep.$error.mask">Cep é inválido.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Endereço:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.endereco.$invalid && formEmpre.endereco.$dirty && submited)|| (submited && formEmpre.endereco.$pristine),
+											'has-success' : (!formEmpre.endereco.$invalid && formEmpre.endereco.$dirty)}">
+												<input type="text" class="form-control" id="v" name="endereco"  ng-model="empresa1.endereco" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEmpre.endereco.$invalid && formEmpre.endereco.$dirty && submited) || formEmpre.endereco.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.endereco.$error.required">Endereço é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>						
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Número:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.numero.$invalid && formEmpre.numero.$dirty && submited)|| (submited && formEmpre.numero.$pristine),
+											'has-success' : (!formEmpre.numero.$invalid && formEmpre.numero.$dirty)}">
+												<input type="text" class="form-control" id="numero"  name="numero" ng-model="empresa1.numero" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEmpre.numero.$invalid && formEmpre.numero.$dirty && submited) || formEmpre.numero.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.numero.$error.required">Número é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Bairro:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.bairro.$invalid && formEmpre.bairro.$dirty && submited)|| (submited && formEmpre.bairro.$pristine),
+											'has-success' : (!formEmpre.bairro.$invalid && formEmpre.bairro.$dirty)}">
+												<input type="text" class="form-control" id="bairro" name="bairro" ng-model="empresa1.bairro" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEmpre.bairro.$invalid && formEmpre.bairro.$dirty && submited) || formEmpre.bairro.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.bairro.$error.required">Bairro é Obrigatório.</p>
+												</span>
+											</div>																
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Cidade:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.cidade.$invalid && formEmpre.cidade.$dirty && submited)|| (submited && formEmpre.cidade.$pristine),
+											'has-success' : (!formEmpre.cidade.$invalid && formEmpre.cidade.$dirty)}">
+												<input type="text" class="form-control" id="cidade"  name="cidade" ng-model="empresa1.cidade" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEmpre.cidade.$invalid && formEmpre.cidade.$dirty && submited) || formEmpre.cidade.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.cidade.$error.required">Cidade é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">UF:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEmpre.uf.$invalid && formEmpre.uf.$dirty && submited)|| (submited && formEmpre.uf.$pristine),
+											'has-success' : (!formEmpre.uf.$invalid && formEmpre.uf.$dirty)}">
+												<input type="text" class="form-control" id="uf"  name="uf"  ng-model="empresa1.uf" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEmpre.uf.$invalid && formEmpre.uf.$dirty && submited) || formEmpre.uf.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEmpre.uf.$error.required">UF é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>	
+								<div id="pontuacao" class="tab-pane" ng-if="(user.login.id_tipo_login==1 || user.login.id_tipo_login==2) && !novo">																						
+									<div class="form-group">
+										<table class="table table-bordered table-striped" show-filter="true" >
+											<thead>
+												<tr>												
+												<td class="col-sm-5" style="text-align:center;">																		
+													Descrição																		
+												</td>
+												<td class="col-sm-3" style="text-align:center;">
+													Pontos																		
+												</td>
+												<td class="col-sm-3" style="text-align:center;">																		
+													Data																		
+												</td>
+												<td class="col-sm-1" style="text-align:center;">																		
+													Ação																		
+												</td>							
+												</tr>
+											</thead>
+											<tr  ng-repeat="pontos in empresa1.pontuacoes | orderBy:sortType:sortReverse">
+												<td class="col-sm-5">
+													{{pontos.observacao}}</td>
+												<td class="col-sm-3" style="text-align:center;">
+													{{pontos.pontos}}</td>
+												<td class="col-sm-3 text-center">
+													{{pontos.data_criacao}}</td>
+												<td class="col-sm-1">
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  ng-click="deletar(pontos)" title="Excluir"><i class="fa fa-minus" aria-hidden="true"></i></i></td>
+											</tr>
+										</table>
+										<div class="text-center" ng-if="!empresa1.pontuacoes.length">Nenhum ponto registrado.</div>	
+									</div>														
+								</div>
+								<div id="senha" class="tab-pane" ng-if="user.login.id_tipo_login==1 && !view && !novo">																						
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="senha">Senha:</label>
+										<div class="col-md-8">
+											<input type="password" class="form-control" id="senha" name="senha" ng-model="empresa1.senha">																
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="repetir_senha">Repetir Senha:</label>
+										<div class="col-md-8">
+											<input type="password" class="form-control" id="repetir_senha" name="repetir_senha" ng-model="empresa1.repetir_senha">
+										</div>
+									</div>														
+								</div>
+							</div>												
+						</div>
+					</form>
+				<div class="col-md-8 col-md-offset-3" style="padding-top: 15px;">
+					<button type="button" ng-click="cancelar()" class="mb-xs mt-xs mr-xs btn btn-default pull-right" >Cancelar</button>	
+					<button type="button" ng-click="salvar(formEmpre)" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-if="!view">Salvar</button>
+				</div>
+				</div>
+				<footer class="panel-footer"></footer>
+			</section>
+		</div>
+
+	</div>
+<!-- end: page -->
+

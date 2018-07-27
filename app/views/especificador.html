@@ -1,0 +1,256 @@
+<header class="page-header">
+<h2>{{operacao}} Especificador</h2>
+</header>
+<!-- start: page -->
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1 col-sm-12 col-md-12">
+			<section class="panel panel-featured">
+				<header class="panel-heading">
+					<h2 class="panel-title"><i class="fa fa-users" aria-hidden="true"></i> {{operacao}} Especificador</h2>
+				</header>
+				<div class="panel-body">										
+					<form class="form-horizontal form-bordered" name="formEspec">
+						<div class="tabs noPaddingBot" >
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a href="ui-elements-tabs.html#dadosPessoais" data-toggle="tab"><i class="fa fa-address-book" aria-hidden="true"></i>  Dados Pessoais</a>
+								</li>
+								<li>
+									<a href="ui-elements-tabs.html#endereco" data-toggle="tab"><i class="fa fa-address-card" aria-hidden="true"></i>  Endereço</a>
+								</li>
+								<li>
+									<a href="ui-elements-tabs.html#financeiro" data-toggle="tab" ng-show="user.login.id_tipo_login!=4"><i class="fa fa-money" aria-hidden="true"></i>  Financeiro</a>
+								</li>
+								<li >
+								<a href="pages-user-profile.html#senha" data-toggle="tab" ng-show="user.login.id_tipo_login==1 && !aprovar && !novo"><i class="fa fa-key Senha" aria-hidden="true"></i> Senha</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div id="dadosPessoais" class="tab-pane active">
+									<div class="form-group">
+										<label class="col-md-3 control-label" >Nome:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.nome.$invalid && formEspec.nome.$dirty && submited)|| (submited && formEspec.nome.$pristine),
+											'has-success' : (!formEspec.nome.$invalid && formEspec.nome.$dirty)}">
+												<input type="text" class="form-control" id="nome" name="nome"  ng-model="especificador1.nome" ng-disabled="aprovar || view" required>
+												<span ng-show="(formEspec.nome.$invalid && formEspec.nome.$dirty && submited) || formEspec.nome.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEspec.nome.$error.required">Nome é Obrigatório.</p>
+												</span>
+											</div>
+										</div>															
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" >Sobrenome:</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="sobrenome" name="sobrenome"  ng-model="especificador1.sobrenome" ng-disabled="aprovar || view">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Empresa:</label>
+										<div class="col-md-8">																
+											<div ng-class="{'has-error' : (formEspec.empresa.$invalid && formEspec.empresa.$dirty && submited)|| (submited && formEspec.empresa.$pristine),
+											'has-success' : (!formEspec.empresa.$invalid && formEspec.empresa.$dirty)}">
+												<input type="text" class="form-control" id="empresa" name="empresa" ng-model="especificador1.empresa" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEspec.empresa.$invalid && formEspec.empresa.$dirty && submited) || formEspec.empresa.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEspec.empresa.$error.required">Empresa é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">E-mail:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.email.$invalid && formEspec.email.$dirty && submited)|| (submited && formEspec.email.$pristine),
+											'has-success' : (!formEspec.email.$invalid && formEspec.email.$dirty)}">
+												<input type="text" class="form-control" id="email" name="email" ng-model="especificador1.email" ng-disabled="!novo || arpovar  || view" required>
+												<span ng-show="(formEspec.email.$invalid && formEspec.email.$dirty && submited) || formEspec.email.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEspec.email.$error.required">E-mail é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group" ng-show="user.login.id_tipo_login==1 || user.login.id_tipo_login==2">
+										<label class="col-md-3 control-label" for="inputDefault">Data Nascimento:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.data_nascimento.$invalid && formEspec.data_nascimento.$dirty && submited)|| (submited && formEspec.data_nascimento.$pristine),
+											'has-success' : (!formEspec.data_nascimento.$invalid && formEspec.data_nascimento.$dirty)}">
+												<input type="date" class="form-control" name="data_nascimento" id="data_nascimento" ng-model="especificador1.data_nascimento" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEspec.data_nascimento.$invalid && formEspec.data_nascimento.$dirty && submited) || formEspec.data_nascimento.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formEspec.data_nascimento.$error.required">Data de nascimento é Obrigatório.</p>
+														<p class="error-msg" ng-show="formEspec.data_nascimento.$error.date">Data de nascimento inválida.</p>
+												</span>
+											</div>
+										</div>	
+									</div>
+									<div class="form-group" ng-show="user.login.id_tipo_login==1 || user.login.id_tipo_login==2">
+										<label class="col-md-3 control-label" for="inputDefault">CPF/CNPJ:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.cpf.$invalid && formEspec.cpf.$dirty && submited)|| (submited && formEspec.cpf.$pristine),
+											'has-success' : (!formEspec.cpf.$invalid && formEspec.cpf.$dirty)}">
+												<input type="text"  class="form-control" name="cpf" id="cpf"   ng-model="especificador1.cpf" ng-disabled="aprovar  || view" required>
+											<span ng-show="(formEspec.cpf.$invalid && formEspec.cpf.$dirty && submited) || formEspec.cpf.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formEspec.cpf.$error.required">CPF é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group" ng-show="user.login.id_tipo_login==1 || user.login.id_tipo_login==2">
+										<label class="col-md-3 control-label" for="inputDefault">RG:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.rg.$invalid && formEspec.rg.$dirty && submited)|| (submited && formEspec.rg.$pristine),
+											'has-success' : (!formEspec.rg.$invalid && formEspec.rg.$dirty)}">
+												<input type="text"  class="form-control" name="rg" id="rg"  ng-model="especificador1.rg" ng-disabled="aprovar  || view" required>
+											<span ng-show="(formEspec.rg.$invalid && formEspec.rg.$dirty && submited) || formEspec.rg.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formEspec.rg.$error.required">RG é Obrigatório.</p>
+												</span>
+											</div>											
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Telefone 1:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.telefone.$invalid && formEspec.telefone.$dirty && submited)|| (submited && formEspec.telefone.$pristine),
+											'has-success' : (!formEspec.telefone.$invalid && formEspec.telefone.$dirty)}">
+												<input type="text" class="form-control" id="telefone" name="telefone"  mask='(99) 99999999?9'  ng-model="especificador1.telefone" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEspec.telefone.$invalid && formEspec.telefone.$dirty && submited) || formEspec.telefone.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formEspec.telefone.$error.required">Telefone 1 é Obrigatório.</p>
+														<p class="error-msg" ng-show="formEspec.telefone.$error.mask">Telefone 1 Inválido.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Telefone 2:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.celular.$invalid && formEspec.celular.$dirty && submited)|| (submited && formEspec.celular.$pristine),
+											'has-success' : (!formEspec.celular.$invalid && formEspec.celular.$dirty)}">
+												<input type="text" class="form-control" id="celular" name="celular" mask='(99) 99999999?9'  ng-model="especificador1.celular" ng-disabled="aprovar  || view">
+												<span ng-show="(formEspec.celular.$invalid && formEspec.celular.$dirty && submited) || formEspec.celular.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formEspec.celular.$error.mask">Telefone 2 Inválido.</p>
+												</span>
+											</div>
+										</div>
+									</div>						
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Profissão:</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="profissao" name="profissao"  ng-model="especificador1.profissao" ng-disabled="aprovar  || view">
+										</div>
+									</div>
+								</div>
+								<div id="endereco" class="tab-pane">
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Cep:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.cep.$invalid && formEspec.cep.$dirty && submited)|| (submited && formEspec.cep.$pristine),
+											'has-success' : (!formEspec.cep.$invalid && formEspec.cep.$dirty)}">
+												<input type="text" class="form-control" id="cep" name="cep" mask='99999-999'  ng-model="especificador1.cep" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEspec.cep.$invalid && formEspec.cep.$dirty && submited) || formEspec.cep.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formEspec.cep.$error.required">Cep é Obrigatório.</p>
+														<p class="error-msg" ng-show="formEspec.cep.$error.mask">Cep é inválido.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Endereço:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.endereco.$invalid && formEspec.endereco.$dirty && submited)|| (submited && formEspec.endereco.$pristine),
+											'has-success' : (!formEspec.endereco.$invalid && formEspec.endereco.$dirty)}">
+												<input type="text" class="form-control" id="endereco" name="endereco"  ng-model="especificador1.endereco" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEspec.endereco.$invalid && formEspec.endereco.$dirty && submited) || formEspec.endereco.$pristine && submited " class="ng-hide">
+															<p class="error-msg" ng-show="formEspec.endereco.$error.required">Endereço é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>						
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Número:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.numero.$invalid && formEspec.numero.$dirty && submited)|| (submited && formEspec.numero.$pristine),
+											'has-success' : (!formEspec.numero.$invalid && formEspec.numero.$dirty)}">
+												<input type="text" class="form-control" id="numero"  name="numero" ng-model="especificador1.numero" ng-disabled="aprovar  || view" required>
+											<span ng-show="(formEspec.numero.$invalid && formEspec.numero.$dirty && submited) || formEspec.numero.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formEspec.numero.$error.required">Número é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Bairro:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.bairro.$invalid && formEspec.bairro.$dirty && submited)|| (submited && formEspec.bairro.$pristine),
+											'has-success' : (!formEspec.bairro.$invalid && formEspec.bairro.$dirty)}">
+												<input type="text" class="form-control" id="bairro" name="bairro" ng-model="especificador1.bairro" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEspec.bairro.$invalid && formEspec.bairro.$dirty && submited) || formEspec.bairro.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formEspec.bairro.$error.required">Bairro é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Cidade:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.cidade.$invalid && formEspec.cidade.$dirty && submited)|| (submited && formEspec.cidade.$pristine),
+											'has-success' : (!formEspec.cidade.$invalid && formEspec.cidade.$dirty)}">
+												<input type="text" class="form-control" id="cidade"  name="cidade" ng-model="especificador1.cidade" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEspec.cidade.$invalid && formEspec.cidade.$dirty && submited) || formEspec.cidade.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formEspec.cidade.$error.required">Cidade é Obrigatória.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">UF:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formEspec.uf.$invalid && formEspec.uf.$dirty && submited)|| (submited && formEspec.cidade.$pristine),
+											'has-success' : (!formEspec.uf.$invalid && formEspec.uf.$dirty)}">
+												<input type="text" class="form-control" id="uf"  name="uf"  ng-model="especificador1.uf" ng-disabled="aprovar  || view" required>
+												<span ng-show="(formEspec.uf.$invalid && formEspec.uf.$dirty && submited) || formEspec.uf.$pristine && submited " class="ng-hide">
+														<p class="error-msg" ng-show="formEspec.uf.$error.required">UF é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="financeiro" class="tab-pane" ng-show="user.login.id_tipo_login!=4">
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Dados Bancários:</label>
+										<div class="col-md-8">
+												<input type="text" class="form-control" id="dadosBancarios" name="dadosBancarios"  ng-model="especificador1.dados_bancarios" ng-disabled="aprovar  || view">
+										</div>
+									</div>
+								</div>
+								<div id="senha" class="tab-pane" ng-show="user.login.id_tipo_login==1 && !aprovar && !novo">																						
+									<fieldset>
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="senha">Nova Senha:</label>
+											<div class="col-md-7">
+												<input type="password" class="form-control" id="senha" name="senha" ng-model="especificador1.senha">																
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="repetir_senha">Repetir Nova Senha:</label>
+											<div class="col-md-7">
+												<input type="password" class="form-control" id="repetir_senha" name="repetir_senha" ng-model="especificador1.repetir_senha">
+											</div>
+										</div>
+									</fieldset>
+							</div>
+							</div>
+						</div>
+					</form>
+					<div class="col-md-8 col-md-offset-3" style="padding-top: 15px;">
+						<div class="pull-right">
+							<button type="button" ng-click="cancelar()" class="mb-xs mt-xs mr-xs btn btn-default pull-right" >Cancelar</button>
+							<button type="button" ng-click="salvar(formEspec)" ng-disabled="aprovar" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-if="!view">Salvar</button>												
+						</div>
+					</div>										
+				</div>
+
+				<footer class="panel-footer"></footer>
+			</section>								
+		</div>
+	</div>
+<!-- end: page -->
+

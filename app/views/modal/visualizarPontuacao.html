@@ -1,0 +1,55 @@
+<div class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+				<button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Visualizar Pontuação</h4>
+            </div>
+            <div class="modal-body">
+				<div class="form-group">
+					<table class="table table-bordered table-striped" show-filter="true" >
+						<thead>
+						  <tr>												
+							<td class="col-sm-5" style="text-align:center;">
+								<a  ng-click="sortType = 'pontos'; sortReverse = !sortReverse">
+								Empresa
+								<span ng-show="sortType == 'pontos'" class="fa fa-caret-down"></span>
+							</td>
+							<td class="col-sm-2" style="text-align:center;">
+								<a  ng-click="sortType = 'data_criacao'; sortReverse = !sortReverse">
+								Pontos
+								<span ng-show="sortType == 'data_criacao'" class="fa fa-caret-down"></span>
+							</td>
+							<td class="col-sm-3" style="text-align:center;">
+								<a  ng-click="sortType = 'observacao'; sortReverse = !sortReverse">
+								Descrição
+								<span ng-show="sortType == 'observacao'" class="fa fa-caret-down"></span>
+							</td>
+							<td class="col-sm-2" style="text-align:center;">
+								<a  ng-click="sortType = 'observacao'; sortReverse = !sortReverse">
+								Data
+								<span ng-show="sortType == 'observacao'" class="fa fa-caret-down"></span>
+							</td>							
+						  </tr>
+						</thead>
+	
+						<tr  ng-repeat="user in pontuacao | orderBy:sortType:sortReverse| filter:searchFish as filtered">
+							<td class="col-sm-5">
+								{{user.nome}}</td>
+							<td class="col-sm-2" style="text-align:center;">
+								{{user.pontos}}</td>
+							<td class="col-sm-3">
+								{{user.descricao}}</td>
+							<td class="col-sm-2">
+								{{user.data_criacao}}</td>
+						</tr>																						
+					</table>
+					<div class="text-center" ng-if="!pontuacao.length">Nenhum ponto registrado.</div>	
+				</div>				
+            </div>
+            <div class="modal-footer">				
+                <button type="button" ng-click="close(false)" class="btn btn-default" data-dismiss="modal">Cancelar</button>                
+            </div>
+        </div>
+    </div>
+</div>

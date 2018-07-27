@@ -1,0 +1,370 @@
+<header class="page-header">
+	<h2>{{operacao}} Cliente</h2>	
+</header>
+<!-- start: page -->
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-md-12">
+			<section class="panel panel-featured">
+				<header class="panel-heading">
+					<h2 class="panel-title"><i class="fa fa-address-book" aria-hidden="true"></i> {{operacao}} Cliente</h2>
+				</header>
+				<div class="panel-body">										
+					<form class="form-horizontal form-bordered" name="formClientes">
+						<div class="tabs noPaddingBot" >
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a href="ui-elements-tabs.html#dadosClientes" data-toggle="tab"><i class="fa fa-address-card" aria-hidden="true"></i></i>  Dados Cliente</a>
+								</li>
+								<li>
+									<a href="ui-elements-tabs.html#fasesObra" data-toggle="tab"><i class="fa fa-check-square-o" aria-hidden="true"></i></i>  Fases da Obra</a>
+								</li>
+								<li>
+									<a href="ui-elements-tabs.html#especificadores" data-toggle="tab"><i class="fa fa-user" aria-hidden="true"></i></i>  Responsáveis da Obra</a>
+								</li>
+								<li>
+									<a href="ui-elements-tabs.html#observacao" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i></i>  Observações</a>
+								</li>
+								<li >
+									<a href="pages-user-profile.html#senha" data-toggle="tab" ng-show="user.login.id_tipo_login==1 && !novo"><i class="fa fa-key Senha" aria-hidden="true"></i> Senha</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div id="dadosClientes" class="tab-pane active">
+									<div class="form-group">
+										<label class="col-md-3 control-label" >Nome:</label>
+										<div class="col-md-8">																
+											<div ng-class="{'has-error' : (formClientes.nome.$invalid && formClientes.nome.$dirty && submited)|| (submited && formClientes.nome.$pristine),
+											'has-success' : (!formClientes.nome.$invalid && formClientes.nome.$dirty)}">
+												<input type="text" class="form-control" id="nome" name="nome"  ng-model="cliente1.nome" ng-disabled="view" required>
+												<span ng-show="(formClientes.nome.$invalid && formClientes.nome.$dirty && submited) || formClientes.nome.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formClientes.nome.$error.required">Nome é Obrigatório.</p>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" >Sobrenome:</label>
+										<div class="col-md-8">																
+											<input type="text" class="form-control" id="sobrenome" name="sobrenome"  ng-model="cliente1.sobrenome" ng-disabled="view">
+										</div>
+									</div>
+									<div class="form-group">														
+										<label class="col-md-3 control-label" for="inputDefault">Data Nascimento:</label>
+										<div class="col-md-3">
+											<div ng-class="{'has-error' : (formClientes.data_nascimento.$invalid && formClientes.data_nascimento.$dirty && submited)|| (submited && formClientes.data_nascimento.$pristine),
+											'has-success' : (!formClientes.data_nascimento.$invalid && formClientes.data_nascimento.$dirty)}">
+												<input type="date" class="form-control" name="data_nascimento" id="data_nascimento"  ng-model="cliente1.data_nascimento" ng-disabled="view" >
+												<span ng-show="(formClientes.data_nascimento.$invalid && formClientes.data_nascimento.$dirty && submited) || formClientes.data_nascimento.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formClientes.data_nascimento.$error.date">Data de nascimento é inválida.</p>
+												</span>
+											</div>
+										</div>															
+									</div>	
+									<div class="form-group">
+										<label class="col-md-3 control-label" >Indicado por:</label>
+										<div class="col-md-8">
+											
+												<angucomplete-alt id="indicou"
+													placeholder="Quem indicou?"
+													initial-value="indicou"
+													pause="100"
+													selected-object="selectedIndicou"
+													local-data="especificadores"
+													search-fields="nome"
+													title-field="nome"
+													minlength="1"
+													input-class="form-control form-control-small" 
+													disable-input="!novo || view"
+													input-name="indicou"
+													field-required="true"
+												/>
+												<span ng-show="(formClientes.indicou.$invalid && formClientes.indicou.$dirty && submited) || formClientes.indicou.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="(!cliente1.id_indicou ) && submited">Quem indicou é obrigatório.</p>
+												</span>														
+										</div>
+									</div>															
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">E-mail:</label>
+										<div class="col-md-8">
+											<div ng-class="{'has-error' : (formClientes.email.$invalid && formClientes.email.$dirty && submited)|| (submited && formClientes.email.$pristine),
+											'has-success' : (!formClientes.email.$invalid && formClientes.email.$dirty)}">
+												<input type="text" class="form-control" id="email" name="email" ng-model="cliente1.email" ng-disabled="!novo" required>
+												<span ng-show="(formClientes.email.$invalid && formClientes.email.$dirty && submited) || formClientes.email.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formClientes.email.$error.required">E-mail é Obrigatório.</p>
+												</span>
+											</div>	
+										</div>															
+									</div>
+								
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Telefone 1:</label>
+										<div class="col-md-3">
+											<div ng-class="{'has-error' : (formClientes.telefone.$invalid && formClientes.telefone.$dirty && submited)|| (submited && formClientes.telefone.$pristine),
+											'has-success' : (!formClientes.telefone.$invalid && formClientes.telefone.$dirty)}">
+												<input type="text" class="form-control" id="telefone" name="telefone" mask='(99) 99999999?9'  ng-model="cliente1.telefone" ng-disabled="view" required>
+												<span ng-show="(formClientes.telefone.$invalid && formClientes.telefone.$dirty && submited) || formClientes.telefone.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formClientes.telefone.$error.required">Telefone 1 é Obrigatório.</p>
+													<p class="error-msg" ng-show="formClientes.telefone.$error.mask">Telefone 1 Inválido.</p>
+												</span>
+											</div>
+										</div>
+										<label class="col-md-2 control-label" for="inputDefault">Telefone 2:</label>
+										<div class="col-md-3">
+											<div ng-class="{'has-error' : (formClientes.celular.$invalid && formClientes.celular.$dirty && submited)|| (submited && formClientes.celular.$pristine),
+											'has-success' : (!formClientes.telefone.$invalid && formClientes.telefone.$dirty)}">
+												<input type="text" class="form-control" id="celular" name="celular" mask='(99) 99999999?9' ng-model="cliente1.celular" ng-disabled="view">
+												<span ng-show="(formClientes.celular.$invalid && formClientes.celular.$dirty && submited) || formClientes.celular.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formClientes.celular.$error.mask">Telefone 2 Inválido.</p>
+												</span>
+											</div>	
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Endereço:</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="endereco" name="endereco"  ng-model="cliente1.endereco" ng-disabled="view">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Número:</label>
+										<div class="col-md-2">
+											<input type="text" class="form-control" id="numero"  name="numero" ng-model="cliente1.numero" ng-disabled="view">
+										</div>	
+										<label class="col-md-2 control-label" for="inputReadOnly">Bairro:</label>
+										<div class="col-md-4">
+											<input type="text" class="form-control" id="bairro" name="bairro" ng-model="cliente1.bairro" ng-disabled="view">															
+										</div>
+									</div>														
+									<div class="form-group">															
+										<label class="col-md-3 control-label" for="inputDefault">Cep:</label>
+										<div class="col-md-2">
+											<div ng-class="{'has-error' : (formClientes.cep.$invalid && formClientes.cep.$dirty && submited)|| (submited && formClientes.cep.$pristine),
+											'has-success' : (!formClientes.cep.$invalid && formClientes.cep.$dirty)}">
+												<input type="text" class="form-control" id="cep" name="cep" mask='99999-999'  ng-model="cliente1.cep" ng-disabled="view">
+												<span ng-show="(formClientes.cep.$invalid && formClientes.cep.$dirty && submited) || formClientes.cep.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formClientes.cep.$error.mask">Cep é inválido.</p>
+												</span>
+											</div>																
+										</div>
+										<label class="col-md-1 control-label" for="inputReadOnly">Cidade:</label>
+										<div class="col-md-3">
+											<input type="text" class="form-control" id="cidade"  name="cidade" ng-model="cliente1.cidade" ng-disabled="view">
+										</div>
+										<label class="col-md-1 control-label" for="inputReadOnly">UF:</label>
+										<div class="col-md-1" style="padding-left:0;">
+											<input type="text" class="form-control" id="uf"  name="uf"  ng-model="cliente1.uf" ng-disabled="view">
+										</div>
+									</div>
+
+									<div class="form-group">
+
+									</div>
+								</div>	
+								<div id="fasesObra" class="tab-pane">
+									<section class="panel">
+										<header class="panel-heading">	
+											<h2 class="panel-title">Fases da Obra</h2>
+										</header>
+										<div class="panel-body">																
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Projeto:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input type="checkbox"  id="fase1"  name="fase1" ng-model="cliente1.fase1" ng-disabled="view">
+													</div>
+												</div>
+												<label class="col-md-2 control-label" for="inputDefault">Fundação:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input type="checkbox" id="fase2"  name="fase2" ng-model="cliente1.fase2" ng-disabled="view">
+													</div>
+												</div>
+												<label class="col-md-2 control-label" for="inputDefault">Alvenaria:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input type="checkbox" id="fase3"  name="fase3" ng-model="cliente1.fase3" ng-disabled="view">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Laje:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input type="checkbox" id="fase4"  name="fase4" ng-model="cliente1.fase4" ng-disabled="view">
+													</div>
+												</div>
+												<label class="col-md-2 control-label" for="inputDefault">Telhado:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input type="checkbox" id="fase5"  name="fase5" ng-model="cliente1.fase5" ng-disabled="view">
+													</div>
+												</div>
+												<label class="col-md-2 control-label" for="inputDefault">Reboco:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input type="checkbox" id="fase6"  name="fase6" ng-model="cliente1.fase6" ng-disabled="view">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Forro:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input type="checkbox" id="fase7"  name="fase7" ng-model="cliente1.fase7" ng-disabled="view">
+													</div>
+												</div>
+												<label class="col-md-2 control-label" for="inputDefault">Acabamento:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input type="checkbox" id="fase8"  name="fase8" ng-model="cliente1.fase8" ng-disabled="view">
+													</div>
+												</div>
+												<label class="col-md-2 control-label" for="inputDefault">Decoração:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input type="checkbox" id="fase9"  name="fase9" ng-model="cliente1.fase9" ng-disabled="view">
+													</div>
+												</div>
+											</div>
+											<header class="panel-heading">	
+												<h2 class="panel-title">Tipo da Obra</h2>
+											</header>	
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Residencial:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input style="margin-left: -20px;" type="radio" id="residencial"  name="tipo" ng-model="cliente1.tipo"  ng-value="0" ng-disabled="view">
+													</div>
+												</div>
+												<label class="col-md-2 control-label" for="inputDefault">Comercial:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input style="margin-left: -20px;" type="radio" id="comercial"  name="tipo" ng-model="cliente1.tipo"  ng-value="1" ng-disabled="view">
+													</div>
+												</div>
+												<label class="col-md-2 control-label" for="inputDefault">Prédio:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input style="margin-left: -20px;" type="radio" id="predio"  name="tipo" ng-model="cliente1.tipo"  ng-value="2" ng-disabled="view">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Térrea:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input style="margin-left: -20px;" type="radio" id="terrea" name="terrea" ng-model="cliente1.terrea"  ng-value="0" ng-disabled="view">
+													</div>
+												</div>
+												<label class="col-md-2 control-label" for="inputDefault">Sobrado:</label>
+												<div class="col-md-1">
+													<div class="checkbox">
+														<input style="margin-left: -20px;" type="radio" id="sobrado"  name="terrea" ng-model="cliente1.terrea"  ng-value="1" ng-disabled="view">
+													</div>
+												</div>																	
+											</div>
+										</div>
+									</section>
+								</div>
+								<div id="especificadores" class="tab-pane">			
+									<div class="form-group">
+										<label class="col-md-3 control-label" >Nome do Especificador:</label>
+										<div class="col-md-8">
+											<angucomplete-alt id="nomeEspecificador"
+												placeholder="Digite o nome do especificador da obra."
+												pause="100"
+												initial-value="especificador"														
+												selected-object="selectedEspecificador"
+												local-data="especificadores"
+												search-fields="nome"
+												title-field="nome"
+												minlength="1"
+												input-class="form-control form-control-small"
+												input-name="nomeEspecificador"
+												disable-input="view"																
+												/>																
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Telefone 1:</label>
+										<div class="col-md-3">
+											<input type="text" class="form-control" id="telefone1Especificador" name="telefone1Especificador" ng-model="cliente1.telefone1Especificador" ng-disabled="true">
+										</div>
+										<label class="col-md-2 control-label" for="inputDefault">Telefone 2:</label>
+										<div class="col-md-3">
+											<input type="text" class="form-control" id="telefone2Especificador" name="telefone2Especificador" ng-model="cliente1.telefone2Especificador" ng-disabled="true">
+										</div>																													
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" >E-mail Especificador:</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="emailEspecificador" name="emailEspecificador"  ng-model="cliente1.emailEspecificador" ng-disabled="true">
+										</div>																												
+									</div>
+									<div class="form-group">
+										<label class="col-md-3 control-label" >Empreiteiro:</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="nomeEmpreiteiro" name="nomeEmpreiteiro"  ng-model="cliente1.nome_empreiteiro" ng-disabled="view">
+										</div>																												
+									</div>															
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputDefault">Tel. Empreiteiro 1:</label>
+										<div class="col-md-3">
+											<div ng-class="{'has-error' : (formClientes.telefoneEmpreiteiro1.$invalid && formClientes.telefoneEmpreiteiro1.$dirty && submited)|| (submited && formClientes.telefoneEmpreiteiro1.$pristine),
+											'has-success' : (!formClientes.telefoneEmpreiteiro1.$invalid && formClientes.telefoneEmpreiteiro1.$dirty)}">
+												<input type="text" class="form-control" id="telefoneEmpreiteiro1" name="telefoneEmpreiteiro1" mask='(99) 99999999?9'  ng-model="cliente1.telefone1_empreiteiro" ng-disabled="view">
+												<span ng-show="(formClientes.telefoneEmpreiteiro1.$invalid && formClientes.telefoneEmpreiteiro1.$dirty && submited) || formClientes.telefoneEmpreiteiro1.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formClientes.telefoneEmpreiteiro1.$error.mask">Telefone é inválido.</p>
+												</span>
+											</div>
+										</div>
+										<label class="col-md-2 control-label" for="inputDefault">Tel. Empreiteiro 2:</label>
+										<div class="col-md-3">
+											<div ng-class="{'has-error' : (formClientes.telefoneEmpreiteiro2.$invalid && formClientes.telefoneEmpreiteiro2.$dirty && submited)|| (submited && formClientes.telefoneEmpreiteiro2.$pristine),
+											'has-success' : (!formClientes.telefoneEmpreiteiro2.$invalid && formClientes.telefoneEmpreiteiro2.$dirty)}">
+												<input type="text" class="form-control" id="telefoneEmpreiteiro2" name="telefoneEmpreiteiro2" mask='(99) 99999999?9'  ng-model="cliente1.telefone2_empreiteiro" ng-disabled="view">
+												<span ng-show="(formClientes.telefoneEmpreiteiro2.$invalid && formClientes.telefoneEmpreiteiro2.$dirty && submited) || formClientes.telefoneEmpreiteiro2.$pristine && submited " class="ng-hide">
+													<p class="error-msg" ng-show="formClientes.telefoneEmpreiteiro2.$error.mask">Telefone é inválido.</p>
+												</span>
+											</div>
+										</div>
+									</div>																																																							
+								</div>	
+								<div id="observacao" class="tab-pane">														
+									<div class="form-group">
+										<label class="col-md-3 control-label" for="inputReadOnly">Observações:</label>
+										<div class="col-md-8">
+												<textarea class="form-control" rows="5" id="observacoes" name="observacoes" ng-model="cliente1.observacoes" ng-disabled="view"></textarea>
+										</div>
+									</div>																												
+								</div>
+								<div id="senha" class="tab-pane" ng-show="user.login.id_tipo_login==1 && !novo">														
+									<fieldset>
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="senha">Nova Senha:</label>
+											<div class="col-md-7">
+												<input type="password" class="form-control" id="senha" name="senha" ng-model="cliente1.senha">																
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-md-4 control-label" for="repetir_senha">Repetir Nova Senha:</label>
+											<div class="col-md-7">
+												<input type="password" class="form-control" id="repetir_senha" name="repetir_senha" ng-model="cliente1.repetir_senha">
+											</div>
+										</div>
+									</fieldset>																												
+								</div>
+							</div>												
+						</div>
+					</form>
+					<div class="col-md-8 col-md-offset-3" style="padding-top: 15px;">
+						<button type="button" ng-click="cancelar()" class="mb-xs mt-xs mr-xs btn  btn-default pull-right" >Cancelar</button>
+						<button type="button" ng-click="salvar(formClientes)" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-if="!view">Salvar</button>
+					</div>										
+				</div>
+				<footer class="panel-footer"></footer>
+			</section>								
+		</div>
+	</div>
+<!-- end: page -->
+

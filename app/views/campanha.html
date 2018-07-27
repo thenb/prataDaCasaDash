@@ -1,0 +1,91 @@
+					<header class="page-header">
+						<h2>{{operacao}} Campanha</h2>						
+					</header>
+					<!-- start: page -->
+						<div class="row">
+							<div class="col-lg-10 col-lg-offset-1 col-sm-12 col-md-12">
+								<section class="panel panel-featured">
+									<header class="panel-heading">
+										<h2 class="panel-title"><i class="fa fa-university" aria-hidden="true"></i> {{operacao}} Campanha</h2>
+									</header>
+									<div class="panel-body">										
+											<form class="form-horizontal form-bordered" name="formCampa">
+											<div class="tabs noPaddingBot" >
+												<ul class="nav nav-tabs">
+													<li class="active">
+														<a href="ui-elements-tabs.html#dadosCampanha" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i></i>  Dados Campanha</a>
+													</li>													
+												</ul>
+												<div class="tab-content">
+													<div id="dadosCampanha" class="tab-pane active">
+														<div class="form-group">
+															<label class="col-md-3 control-label" >Nome:</label>
+															<div class="col-md-8">
+																<div ng-class="{'has-error' : (formCampa.nome.$invalid && formCampa.nome.$dirty && submited)|| (submited && formCampa.nome.$pristine),
+																'has-success' : (!formCampa.nome.$invalid && formCampa.nome.$dirty)}">
+																	<input type="text" class="form-control" id="nome" name="nome"  ng-model="campanha1.nome" required>
+																	<span ng-show="(formCampa.nome.$invalid && formCampa.nome.$dirty && submited) || formCampa.nome.$pristine && submited " class="ng-hide">
+																			<p class="error-msg" ng-show="formCampa.nome.$error.required">Nome é Obrigatório.</p>
+																	</span>
+																</div>	
+															</div>
+														</div>														
+														<div class="form-group">
+															<label class="col-md-3 control-label" for="inputDefault">Data Início:</label>
+															<div class="col-md-8">
+																<div ng-class="{'has-error' : (formCampa.data_inicio.$invalid && formCampa.data_inicio.$dirty && submited)|| (submited && formCampa.data_inicio.$pristine),
+																'has-success' : (!formCampa.data_inicio.$invalid && formCampa.data_inicio.$dirty)}">
+																	<input type="date" class="form-control" name="data_inicio" id="data_inicio" ng-model="campanha1.data_inicio" required>
+																	<span ng-show="(formCampa.data_inicio.$invalid && formCampa.data_inicio.$dirty && submited) || formCampa.data_inicio.$pristine && submited " class="ng-hide">
+																		<p class="error-msg" ng-show="formCampa.data_inicio.$error.required">Data Início é Obrigatório.</p>
+																	</span>
+																	<span ng-show="(dataInvalida && submited)" class="ng-hide">
+																		<p class="error-msg">Data Início deve ser menor que Data Fim</p>
+																	</span>
+																</div>	
+															</div>	
+														</div>
+														<div class="form-group">
+															<label class="col-md-3 control-label" for="inputDefault">Data Fim:</label>
+															<div class="col-md-8">
+																<div ng-class="{'has-error' : (formCampa.data_fim.$invalid && formCampa.data_fim.$dirty && submited)|| (submited && formCampa.data_fim.$pristine),
+																'has-success' : (!formCampa.data_fim.$invalid && formCampa.data_fim.$dirty)}">
+																	<input type="date" class="form-control" name="data_fim" id="data_fim" ng-model="campanha1.data_fim" required>
+																	<span ng-show="(formCampa.data_fim.$invalid && formCampa.data_fim.$dirty && submited) || formCampa.data_fim.$pristine && submited " class="ng-hide">
+																			<p class="error-msg" ng-show="formCampa.data_fim.$error.required">Data Fim é Obrigatório.</p>
+																	</span>
+																	<span ng-show="(dataInvalida && submited)" class="ng-hide">
+																		<p class="error-msg">Data Fim deve ser maior que Data Início</p>
+																	</span>
+																</div>	
+															</div>	
+														</div>	
+														<div class="form-group">
+															<label class="col-md-3 control-label" for="inputDefault">Regulamento:</label>
+															<div class="col-md-8">
+																<div ng-class="{'has-error' : (formCampa.regulamento.$invalid && formCampa.regulamento.$dirty && submited)|| (submited && formCampa.regulamento.$pristine),
+																'has-success' : (!formCampa.regulamento.$invalid && formCampa.regulamento.$dirty)}">
+																	<textarea class="form-control" ng-model="campanha1.regulamento" rows="7" cols="50" id="regulamento" name="regulamento" required>
+																	</textarea>	
+																	<span ng-show="(formCampa.regulamento.$invalid && formCampa.regulamento.$dirty && submited) || formCampa.regulamento.$pristine && submited " class="ng-hide">
+																		<p class="error-msg" ng-show="formCampa.regulamento.$error.required">Regulamento é Obrigatório.</p>
+																	</span>
+																</div>														
+															</div>
+														</div>														
+													</div>													
+												</div>
+											</div>
+											<div class="col-md-8 col-md-offset-3" style="padding-top: 15px;">
+												<button type="button" ng-click="cancelar()" class="mb-xs mt-xs mr-xs btn btn-default pull-right" >Cancelar</button>
+												<button type="button" ng-click="salvar(formCampa)" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" >Salvar</button>
+											</div>											
+										</form>
+									</div>
+									<footer class="panel-footer"></footer>
+								</section>								
+							</div>
+
+						</div>
+					<!-- end: page -->
+

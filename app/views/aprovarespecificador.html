@@ -1,0 +1,89 @@
+					<header class="page-header">
+						<h2>Especificadores</h2>
+					</header>
+					<!-- start: page -->
+						<div class="row">
+							<div class="col-lg-12">
+								<section class="panel panel-featured">
+									<header class="panel-heading">
+										<h2 class="panel-title"><i class="fa fa-users" aria-hidden="true"></i> Aprovar Especificadores</h2>
+									</header>
+									<div class="panel-body">
+										<form name="formEspec">
+											<div class="form-group">
+												<div class="input-group">
+												<div class="input-group-addon"><i class="fa fa-search"></i></div>
+												<input type="text" class="form-control" placeholder="Buscar" ng-model="searchFish">
+												</div>					  
+											</div>
+										</form>
+										<div class="row" style="padding:15px 0;">
+											<div class="col-xs-6">
+											<p class="output" style="padding-top:10px">Total da busca: <b>{{filtered.length}}</b></p>
+											</div>
+											<div class=" col-xs-6">
+
+											</div>
+										</div>
+										<table class="table table-bordered table-striped" show-filter="true">
+											<thead>
+											  <tr>
+												<td class="col-xs-6 col-sm-2 col-md-2 col-lg-2" style="text-align:center;">
+
+													<a  ng-click="sortType = 'nome'; sortReverse = !sortReverse">
+													Nome
+													<span ng-show="sortType == 'nome'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="hidden-xs col-sm-2 col-md-2 col-lg-3" style="text-align:center;">
+
+													<a  ng-click="sortType = 'empresa'; sortReverse = !sortReverse">
+													Empresa
+													<span ng-show="sortType == 'empresa'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="hidden-xs col-sm-2 col-md-2 col-lg-2" style="text-align:center;">
+
+													<a  ng-click="sortType = 'cpf'; sortReverse = !sortReverse">
+													CPF
+													<span ng-show="sortType == 'cpf'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="hidden-xs col-sm-2 col-md-1 col-lg-1" style="text-align:center;">
+
+													<a  ng-click="sortType = 'cidade'; sortReverse = !sortReverse">
+													Cidade
+													<span ng-show="sortType == 'cidade'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="hidden-xs col-sm-2 col-md-2 col-lg-2" style="text-align:center;">
+
+													<a  ng-click="sortType = 'data_criacao'; sortReverse = !sortReverse">
+													Data criação
+													<span ng-show="sortType == 'data_criacao'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="col-xs-6 col-sm-2 col-md-3 col-lg-2" style="text-align:center;">Ações</td>												
+											  </tr>
+											</thead>
+											<tr ng-repeat="user in especificadores | orderBy:sortType:sortReverse| filter:searchFish as filtered">
+												<td class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+													{{user.nome}}</td>
+												<td class="hidden-xs col-sm-2 col-md-2 col-lg-2">
+													{{user.empresa}}</td>
+												<td class="hidden-xs col-sm-2 col-md-2 col-lg-2" style="text-align:center;">
+													{{user.cpf}}</td>
+												<td class="hidden-xs col-sm-2 col-md-1 col-lg-1">
+													{{user.cidade}}</td>
+												<td class="hidden-xs col-sm-2 col-md-2 col-lg-2" style="text-align:center;">
+													{{user.data_criacao}}</td>
+												<td class="col-xs-6 col-sm-2 col-md-3 col-lg-2" style="text-align:center;">												
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="editar(user)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="aprovar(user)"><i class="fa fa-plus" aria-hidden="true"></i></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="desaprovar(user)" ><i class="fa fa-minus" aria-hidden="true"></i></i>
+
+												</td>
+											</tr>
+										</table>
+										<div class="text-center" ng-if="!especificadores.length">Nenhum especificador aguardando aprovação.</div>	
+									</div>
+									<footer class="panel-footer"></footer>
+								</section>						
+							</div>	
+						</div>
+					<!-- end: page -->

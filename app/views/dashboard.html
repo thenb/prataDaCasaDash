@@ -1,0 +1,283 @@
+<header class="page-header">
+	<h2>Início</h2>
+</header>
+<!-- start: page -->
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+		<section class="panel panel-featured">
+			<header class="panel-heading">
+				<h2 class="panel-title"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Meu Perfil</h2>
+			</header>
+			<div class="panel-body">					
+				<section class="panel panel-group" style="border: 1px solid #DDD;border-bottom: 0;">
+					<header class="panel-heading bg-primary">
+						<div class="widget-profile-info">
+							<div class="profile-picture">							
+								<img ng-if="!user.login.url_perfil" src="assets/images/!logged-user.jpg">
+								<img ng-if="user.login.url_perfil" src="{{user.login.url_perfil}}">
+							</div>
+							<div class="profile-info">
+								<h4 class="name text-weight-semibold" ng-if="user.login.id_tipo_login==3">{{user.especificador.nome}} {{user.especificador.sobrenome}}</h4>
+								<h4 class="name text-weight-semibold" ng-if="user.login.id_tipo_login==4">{{user.cliente.nome}} {{user.especificador.sobrenome}}</h4>
+								<h4 class="name text-weight-semibold" ng-if="user.login.id_tipo_login==2">{{user.empresa.nome}}</h4>
+								<h4 class="name text-weight-semibold" ng-if="user.login.id_tipo_login==1">Administrador</h4>
+								<h5 class="role" ng-if="user.login.id_tipo_login==3">Especificador</h5>
+								<h5 class="role" ng-if="user.login.id_tipo_login==4">Cliente</h5>
+								<h5 class="role" ng-if="user.login.id_tipo_login==2">Empresa</h5>
+								<h5 class="role" ng-if="user.login.id_tipo_login==1">Administrador</h5>
+								<div class="profile-footer">
+									<a href="#!/perfil" ng-if="user.login.id_tipo_login!=1">(Editar perfil)</a>
+								</div>
+							</div>
+						</div>
+					</header>
+					<div id="accordion">
+						<div class="panel panel-accordion panel-accordion-first">
+							<div class="panel-heading">
+							</div>
+							<div id="collapse1One" class="accordion-body collapse in">
+								<div class="panel-body">
+									<ul class="widget-todo-list" ng-if="false">	
+										<li>
+										<label class="todo-label" for="todoListItem3"><span>Nenhuma Notificação</span></label>
+											
+										</li>
+									</ul>
+									<ul class="widget-todo-list" ng-if="false">															
+										<li>
+											<div class="checkbox-custom checkbox-default">
+												<input type="checkbox" id="todoListItem3" class="todo-check">
+												<label class="todo-label" for="todoListItem3"><span>Lorem ipsum dolor sit amet</span></label>
+											</div>
+											<div class="todo-actions">
+												<a class="todo-remove" href="index.html#">
+													<i class="fa fa-times"></i>
+												</a>
+											</div>
+										</li>
+										<li>
+											<div class="checkbox-custom checkbox-default">
+												<input type="checkbox" id="todoListItem4" class="todo-check">
+												<label class="todo-label" for="todoListItem4"><span>Lorem ipsum dolor sit amet</span></label>
+											</div>
+											<div class="todo-actions">
+												<a class="todo-remove" href="index.html#">
+													<i class="fa fa-times"></i>
+												</a>
+											</div>
+										</li>															
+										<li>
+											<div class="checkbox-custom checkbox-default">
+												<input type="checkbox" id="todoListItem6" class="todo-check">
+												<label class="todo-label" for="todoListItem6"><span>Lorem ipsum dolor sit amet</span></label>
+											</div>
+											<div class="todo-actions">
+												<a class="todo-remove" href="index.html#">
+													<i class="fa fa-times"></i>
+												</a>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</section>
+	</div>
+	
+	
+	
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">						
+	<section class="panel panel-featured">
+		<header class="panel-heading">
+			<div class="panel-actions"></div>
+			<h2 class="panel-title"><i class="fa fa-info-circle" aria-hidden="true"></i> Informações</h2>
+		</header>				
+		<div class="panel-body">										
+			<section class="panel" ng-if="user.login.id_tipo_login==1">
+				<div class="panel-body">
+					<div class="widget-summary">
+						<div class="widget-summary-col widget-summary-col-icon">
+							<div class="summary-icon bg-primary">
+								<i class="fa fa-users"></i>
+							</div>
+						</div>
+						<div class="widget-summary-col">
+							<div class="summary">
+								<h4 class="title">Especificadores</h4>
+								<div class="info">
+									<strong class="amount">{{totalEspecificadores}}</strong>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel" ng-if="user.login.id_tipo_login==1">
+				<div class="panel-body">
+					<div class="widget-summary">
+						<div class="widget-summary-col widget-summary-col-icon">
+							<div class="summary-icon bg-primary">
+								<i class="fa fa-building"></i>
+							</div>
+						</div>
+						<div class="widget-summary-col">
+							<div class="summary">
+								<h4 class="title">Empresas</h4>
+								<div class="info">
+									<strong class="amount">{{totalEmpresas}}</strong>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel" ng-if="user.login.id_tipo_login==1">
+				<div class="panel-body">
+					<div class="widget-summary">
+						<div class="widget-summary-col widget-summary-col-icon">
+							<div class="summary-icon bg-primary">
+								<i class="fa fa-address-book"></i>
+							</div>
+						</div>
+						<div class="widget-summary-col">
+							<div class="summary">
+								<h4 class="title">Clientes</h4>
+								<div class="info">
+									<strong class="amount">{{totalClientes}}</strong>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel" ng-if="user.login.id_tipo_login==3">
+				<div class="panel-body">
+					<div class="widget-summary">
+						<div class="widget-summary-col widget-summary-col-icon">
+							<div class="summary-icon bg-primary">
+								<i class="fa fa-star"></i>
+							</div>
+						</div>
+						<div class="widget-summary-col">
+							<div class="summary">
+								<h4 class="title">Pontuação Atual</h4>
+								<div class="info">
+									<strong class="amount">{{pontuacaoAtual}}</strong>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel" ng-if="user.login.id_tipo_login==2">
+				<div class="panel-body">
+					<div class="widget-summary">
+						<div class="widget-summary-col widget-summary-col-icon">
+							<div class="summary-icon bg-primary">
+								<i class="fa fa-star"></i>
+							</div>
+						</div>
+						<div class="widget-summary-col">
+							<div class="summary">
+								<h4 class="title">Pontuação</h4>
+								<div class="info">
+									<strong class="amount">{{pontosEmpresa}}</strong>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel" ng-if="user.login.id_tipo_login==3">
+				<div class="panel-body">
+					<div class="widget-summary">
+						<div class="widget-summary-col widget-summary-col-icon">
+							<div class="summary-icon bg-primary">
+								<i class="fa fa-hand-pointer-o"></i>
+							</div>
+						</div>
+						<div class="widget-summary-col">
+							<div class="summary">
+								<h4 class="title">Indicações</h4>
+								<div class="info">
+									<strong class="amount">{{totalIndicacoes}}</strong>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel" ng-if="user.login.id_tipo_login==3 || user.login.id_tipo_login==4">
+				<div class="panel-body">
+					<div class="widget-summary">
+						<div class="widget-summary-col widget-summary-col-icon">
+							<div class="summary-icon bg-primary">
+								<i class="fa fa-coffee"></i>
+							</div>
+						</div>
+						<div class="widget-summary-col">
+							<div class="summary">
+								<h4 class="title">Empresas Visitadas</h4>
+								<div class="info">
+									<strong class="amount">{{totalVisitas}}</strong>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel" ng-if="user.login.id_tipo_login==2">
+				<div class="panel-body">
+					<div class="widget-summary">
+						<div class="widget-summary-col widget-summary-col-icon">
+							<div class="summary-icon bg-primary">
+								<i class="fa fa-address-book"></i>
+							</div>
+						</div>
+						<div class="widget-summary-col">
+							<div class="summary">
+								<h4 class="title">Presenças</h4>
+								<div class="info">
+									<strong class="amount">{{totalPresencasByEmpresa}}</strong>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="panel" ng-if="user.login.id_tipo_login==2">
+				<div class="panel-body">
+					<div class="widget-summary">
+						<div class="widget-summary-col widget-summary-col-icon">
+							<div class="summary-icon bg-primary">
+								<i class="fa fa-hand-pointer-o"></i>
+							</div>
+						</div>
+						<div class="widget-summary-col">
+							<div class="summary">
+								<h4 class="title">Indicações</h4>
+								<div class="info">
+									<strong class="amount">{{qtdIndicacaoEmpresa}}</strong>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</section>							
+	</div>						
+</div>
+<!-- end: page -->

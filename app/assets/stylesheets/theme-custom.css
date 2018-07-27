@@ -1,0 +1,20 @@
+/* Add here all your CSS customizations */
+
+.form-item-container .list-inline li span {
+	color: #fff !important;
+    border-radius: 5px !important;
+	padding: 5px 5px 5px 10px !important;
+	background: #28396d !important;
+}
+.angucomplete-selected-row {
+    background-color: #28396d !important;
+}
+.autocomplete-list ul li.autocomplete-active {
+    background-color: #28396d!important;
+}
+.form-item-container .list-inline li span {
+    border: 1px solid #28396d!important;
+}
+.list-inline>li {
+    padding: 3px!important;
+}

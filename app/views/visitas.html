@@ -1,0 +1,72 @@
+					<header class="page-header">
+						<h2>Visitas </h2>
+					</header>
+					<!-- start: page -->
+						<div class="row">
+							<div class="col-lg-10 col-lg-offset-1">
+								<section class="panel panel-featured">
+									<header class="panel-heading">
+										<h2 class="panel-title"><i class="fa fa-coffee" aria-hidden="true"></i> Cadastrar Visitas </h2>
+									</header>
+									<div class="panel-body">
+										<form>
+											<div class="form-group">
+											  <div class="input-group">
+												<div class="input-group-addon"><i class="fa fa-search"></i></div>
+												<input type="text" class="form-control" placeholder="Buscar" ng-model="searchFish">
+											  </div>
+											</div>
+										</form>
+										<div class="row" style="padding:15px 0">
+											<div class="col-xs-6 col-sm-6">
+												<p class="output" style="padding-top:10px">Total da busca: <b>{{filtered.length}}</b></p>
+											</div>
+											<div class=" col-xs-6 col-sm-6">
+												<select class="pull-right" name="mySelect" id="mySelect" ng-options=" tipo.name for tipo in tipos track by tipo.id" ng-model="tipoSelecionado" ng-change="changeTipos(tipoSelecionado)"></select>
+											</div>	
+										</div>	
+										<br>
+										<table class="table table-bordered table-striped" show-filter="true" >
+											<thead>
+											  <tr>												
+												<td class="col-sm-4" style="text-align:center;">
+													<a  ng-click="sortType = 'pontos'; sortReverse = !sortReverse">
+													Nome
+													<span ng-show="sortType == 'pontos'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="col-sm-4" style="text-align:center;">
+													<a  ng-click="sortType = 'data_criacao'; sortReverse = !sortReverse">
+													Empresa
+													<span ng-show="sortType == 'data_criacao'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="col-sm-4" style="text-align:center;">
+													<a  ng-click="sortType = 'observacao'; sortReverse = !sortReverse">
+													Ações
+													<span ng-show="sortType == 'observacao'" class="fa fa-caret-down"></span>
+												</td>												
+											  </tr>
+											</thead>
+						
+											<tr  ng-repeat="user in especificadores | orderBy:sortType:sortReverse| filter:searchFish as filtered">
+												<td class="col-sm-4">
+													{{user.nome}}</td>
+												<td class="col-sm-4" ng-if="tipoSelecionado.id==2">
+													{{user.nomeEmpresa}}</td>
+												<td class="col-sm-4" ng-if="tipoSelecionado.id==3">
+													{{user.empresa}}</td>
+												<td class="col-sm-4" style="text-align:center;">
+												<button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  ng-click="cadastrarVisita(user)" title="Cadastrar Visita"><i class="fa fa-plus" aria-hidden="true"></i>
+												<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" title="Visualizar"  ng-click="visualizar(user)"><i class="fa fa-eye" aria-hidden="true"></i>
+												</td>
+												
+											</tr>																						
+										</table>
+										<div class="text-center" ng-if="!especificadores.length">Selecione entre Cliente ou Especificador para realizar o cadastro da visita.</div>
+																	
+									</div>
+									<footer class="panel-footer"></footer>
+								</section>								
+							</div>
+			
+						</div>
+					<!-- end: page -->

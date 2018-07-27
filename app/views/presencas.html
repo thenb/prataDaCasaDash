@@ -1,0 +1,59 @@
+					<header class="page-header">
+						<h2>Empresas</h2>
+					</header>
+					<!-- start: page -->
+						<div class="row">
+							<div class="col-lg-10 col-lg-offset-1 col-sm-12 col-md-12">
+								<section class="panel panel-featured">
+									<header class="panel-heading">
+										<h2 class="panel-title"><i class="fa fa-building" aria-hidden="true"></i> Cadastrar Presenças</h2>
+									</header>
+									<div class="panel-body">
+										<form class="form-horizontal form-bordered" name="formPresenca">									
+											<div class="form-group">
+												<label class="col-md-3 control-label" >Nome da Reunião:</label>
+												<div class="col-md-8">
+													<div ng-class="{'has-error' : (formPresenca.nome.$invalid && formPresenca.nome.$dirty && submited)|| (submited && formPresenca.nome.$pristine),
+													'has-success' : (!formPresenca.nome.$invalid && formPresenca.nome.$dirty)}">
+														<input type="text" class="form-control" id="nome" name="nome"  ng-model="presenca.nome" required>
+														<span ng-show="(formPresenca.nome.$invalid && formPresenca.nome.$dirty && submited) || formPresenca.nome.$pristine && submited " class="ng-hide">
+															<p class="error-msg" ng-show="formPresenca.nome.$error.required">Nome é Obrigatório.</p>
+														</span>
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" >Participantes:</label>
+												<div class="col-md-8">
+														<multiple-autocomplete ng-model="presentes" name="presentes" 
+																			   suggestions-arr="empresas" object-property="nome">
+														</multiple-autocomplete>
+														<span ng-show="presentes.length==0 && submited" class="ng-hide">
+															<p class="error-msg" ng-show="presentes.length==0 && submited">Selecione os Participantes.</p>
+														</span>	
+													</div>
+											</div>
+											<div class="form-group">
+												<label class="col-md-3 control-label" for="inputDefault">Descrição:</label>
+												<div class="col-md-8">												
+													<div ng-class="{'has-error' : (formPresenca.descricao.$invalid && formPresenca.descricao.$dirty && submited)|| (submited && formPresenca.descricao.$pristine),
+													'has-success' : (!formPresenca.descricao.$invalid && formPresenca.descricao.$dirty)}">
+														<textarea class="form-control" rows="5" id="descricao" name="descricao" ng-model="presenca.descricao" required="true"></textarea>
+														<span ng-show="(formPresenca.descricao.$invalid && formPresenca.descricao.$dirty && submited) || formPresenca.descricao.$pristine && submited " class="ng-hide">
+															<p class="error-msg" ng-show="formPresenca.descricao.$error.required">A Descrição é Obrigatória.</p>
+														</span>
+													</div>
+												</div>
+											</div>																					
+											<div class="col-md-8 col-md-offset-3" style="padding-right:0;">
+											<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-click="novo(formPresenca)">Cadastrar</button>				
+											</div>											
+										</form>
+									</div>
+									<footer class="panel-footer"></footer>
+								</section>
+														
+							</div>
+						</div>
+			
+					<!-- end: page -->

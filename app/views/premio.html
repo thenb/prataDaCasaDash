@@ -1,0 +1,62 @@
+<header class="page-header">
+	<h2>{{operacao}} Prêmio</h2>
+</header>
+<!-- start: page -->
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-sm-12 col-md-12">
+		<section class="panel panel-featured">
+			<header class="panel-heading">
+				<h2 class="panel-title"><i class="fa fa-gift" aria-hidden="true"></i> {{operacao}} Prêmio</h2>
+			</header>
+			<div class="panel-body">										
+				<form class="form-horizontal form-bordered" name="formPremio">
+					<div class="form-group">
+						<label class="col-md-3 control-label" >Nome:</label>
+						<div class="col-md-8">
+							<div ng-class="{'has-error' : (formPremio.nome.$invalid && formPremio.nome.$dirty && submited)|| (submited && formPremio.nome.$pristine),
+								'has-success' : (!formPremio.nome.$invalid && formPremio.nome.$dirty)}">
+								<input type="text" class="form-control" id="nome" name="nome"  ng-model="premio1.nome" ng-disabled="view" required>
+								<span ng-show="(formPremio.nome.$invalid && formPremio.nome.$dirty && submited) || formPremio.nome.$pristine && submited " class="ng-hide">
+									<p class="error-msg" ng-show="formPremio.nome.$error.required">Nome é Obrigatório.</p>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label" for="inputDefault">Descrição:</label>
+						<div class="col-md-8">
+							<div ng-class="{'has-error' : (formPremio.descricao.$invalid && formPremio.descricao.$dirty && submited)|| (submited && formPremio.descricao.$pristine),
+								'has-success' : (!formPremio.descricao.$invalid && formPremio.descricao.$dirty)}">
+								<input type="text" class="form-control" id="descricao" name="descricao" ng-model="premio1.descricao" ng-disabled="view" required>
+								<span ng-show="(formPremio.descricao.$invalid && formPremio.descricao.$dirty && submited) || formPremio.descricao.$pristine && submited " class="ng-hide">
+									<p class="error-msg" ng-show="formPremio.descricao.$error.required">Descrição é Obrigatório.</p>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label" for="inputDefault">Pontos:</label>
+						<div class="col-md-8">
+							<div ng-class="{'has-error' : (formPremio.pontos.$invalid && formPremio.pontos.$dirty && submited)|| (submited && formPremio.pontos.$pristine),
+								'has-success' : (!formPremio.pontos.$invalid && formPremio.pontos.$dirty)}">
+								<input type="text" class="form-control" id="pontos" name="pontos" ng-model="premio1.pontos" ng-disabled="view" required>
+								<span ng-show="(formPremio.pontos.$invalid && formPremio.pontos.$dirty && submited) || formPremio.pontos.$pristine && submited " class="ng-hide">
+									<p class="error-msg" ng-show="formPremio.pontos.$error.required">Pontos é Obrigatório.</p>
+								</span>
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="col-md-8 col-md-offset-3" style="padding-top: 15px; padding-right: 0;">
+					<div class="pull-right">
+						<button type="button" ng-click="cancelar()" class="mb-xs mt-xs mr-xs btn btn-default pull-right">Cancelar</button>	
+						<button type="button" ng-click="salvar(formPremio)" ng-if="!view" class="mb-xs mt-xs mr-xs btn btn-primary pull-right">Salvar</button>	
+					</div>				
+				</div>				
+			</div>
+			<footer class="panel-footer"></footer>
+		</section>								
+	</div>
+</div>
+<!-- end: page -->
+
