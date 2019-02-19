@@ -88,7 +88,7 @@
 										<div class="col-md-8">
 											<div ng-class="{'has-error' : (formClientes.email.$invalid && formClientes.email.$dirty && submited)|| (submited && formClientes.email.$pristine),
 											'has-success' : (!formClientes.email.$invalid && formClientes.email.$dirty)}">
-												<input type="text" class="form-control" id="email" name="email" ng-model="cliente1.email" ng-disabled="!novo" required>
+												<input type="text" class="form-control" id="email" name="email" ng-model="cliente1.email" ng-disabled="view || (edit && user.login.id_tipo_login!=1)" required>
 												<span ng-show="(formClientes.email.$invalid && formClientes.email.$dirty && submited) || formClientes.email.$pristine && submited " class="ng-hide">
 													<p class="error-msg" ng-show="formClientes.email.$error.required">E-mail é Obrigatório.</p>
 												</span>

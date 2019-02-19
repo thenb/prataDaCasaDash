@@ -109,7 +109,7 @@ var app = angular
 		templateUrl: 'views/especificador.html',
 		controller: 'EspecificadorCtrl',
 		controllerAs: 'especificador',
-		params: {novo: null, espec: null, aprovar: null, view: null }		
+		params: {novo: null, espec: null, aprovar: null, view: null, edit: null }		
     })
 	.state('aprovarEspec', {
         url: '/aprovarEspec',
@@ -140,7 +140,7 @@ var app = angular
 		templateUrl: 'views/empresa.html',
 		controller: 'EmpresaCtrl',
 		controllerAs: 'empresa',
-		params: {novo: null, empre: null, view: null }
+		params: {novo: null, empre: null, view: null, edit: null }
 	})
 	.state('campanha', {	 
 		url: '/campanha',
@@ -185,7 +185,7 @@ var app = angular
 		templateUrl: 'views/cliente.html',
 		controller: 'ClienteCtrl',
 		controllerAs: 'cliente',
-		params: {novo: null, cliente: null, view: null }
+		params: {novo: null, cliente: null, view: null, edit: null }
 	})
 	.state('presencas', {	 
 		url: '/presencas',

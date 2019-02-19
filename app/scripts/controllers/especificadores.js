@@ -78,16 +78,16 @@ angular.module('prataAngularApp')
 	
 
 	$scope.novo = function () {
-		$state.go('especificador', {novo: true});
+		$state.go('especificador', {novo: true, edit: false});
 	};
 	
 	$scope.editar = function (espec) {
-		$state.go('especificador', {novo: false, espec: espec });
+		$state.go('especificador', {novo: false, espec: espec, edit: true });
 	};
 	
 	$scope.view = function (espec) {
 		console.log(espec);
-		$state.go('especificador', {novo: false, espec: espec, view: true });
+		$state.go('especificador', {novo: false, espec: espec, view: true, edit: false });
 	};
 	
 	$scope.excluir = function(especificador) {

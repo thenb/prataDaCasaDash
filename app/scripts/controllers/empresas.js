@@ -97,16 +97,16 @@ angular.module('prataAngularApp')
 	
 
 	$scope.novo = function () {
-		$state.go('empresa', {novo: true});
+		$state.go('empresa', {novo: true, edit: false});
 	};
 	
 	$scope.editar = function (empresa) {
-		$state.go('empresa', {novo: false, empre: empresa });
+		$state.go('empresa', {novo: false, empre: empresa, edit: true });
 	};
 	
 	$scope.view = function (empresa) {
 		console.log(empresa);
-		$state.go('empresa', {novo: false, empre: empresa, view: true });
+		$state.go('empresa', {novo: false, empre: empresa, view: true, edit: false });
 	};
 	
 	$scope.excluir = function(empresa) {

@@ -16,6 +16,7 @@ angular.module('prataAngularApp')
 	
 	$scope.novo = $state.params.novo;
 	$scope.view = $state.params.view;
+	$scope.edit = $state.params.edit;
 	
 	if(typeof $state.params.novo === 'undefined'){
 			$state.go('empresas');

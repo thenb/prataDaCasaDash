@@ -28,6 +28,8 @@ angular.module('prataAngularApp')
 	
 	$scope.view = $state.params.view
 	$scope.novo = $state.params.novo;
+	$scope.edit = $state.params.edit;
+	
 	if(typeof $state.params.novo === 'undefined'){
 			$state.go('especificadores');
 	}

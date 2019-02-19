@@ -50,6 +50,7 @@ module.exports = function(config) {
       'bower_components/jwt-decode/build/jwt-decode.js',
       'bower_components/angucomplete-alt/angucomplete-alt.js',
       'bower_components/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js',
+      'bower_components/angularMultipleSelect/build/multiple-select.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

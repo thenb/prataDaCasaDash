@@ -36,7 +36,7 @@ angular.module('prataAngularApp')
 						$scope.indicou = true;
 					}								
 				}
-				console.log(item);	
+				
 				item.data_criacao = moment(item.data_criacao).zone(-3).format("DD-MM-YYYY");			
 			});	
 			deffered.resolve(users);
@@ -79,16 +79,16 @@ angular.module('prataAngularApp')
     }	
 
 	$scope.novo = function () {
-		$state.go('cliente', {novo: true});
+		$state.go('cliente', {novo: true, edit: false, view: false});
 	};
 	
 	$scope.editar = function (cliente) {
-		$state.go('cliente', {novo: false, cliente: cliente });
+		$state.go('cliente', {novo: false, edit: true, cliente: cliente, view: false });
 	};	
 	
 	$scope.view = function (cliente) {
 		console.log(cliente);
-		$state.go('cliente', {novo: false, cliente: cliente, view: true });
+		$state.go('cliente', {novo: false, edit: false, cliente: cliente, view: true });
 	};
 	
 	$scope.excluir = function(cliente) {
