@@ -8,7 +8,7 @@
  * Controller of the prataAngularApp
  */
 angular.module('prataAngularApp')
-  .controller('ClientesCtrl',  function (Restangular, $scope, $filter, NgTableParams, $q, ModalService, $state, Notification) {	
+  .controller('ClientesCtrl',  function (Restangular, $scope, $filter, NgTableParams, $q, ModalService, $state, Notification, moment) {	
 	
 	
 	$scope.sortType     = ['data_criacao']; // set the default sort type
@@ -35,9 +35,10 @@ angular.module('prataAngularApp')
 					if(item.id_indicou == $scope.user.especificador.id){
 						$scope.indicou = true;
 					}								
-				}
+				}		
+
 				
-				item.data_criacao = moment(item.data_criacao).zone(-3).format("DD-MM-YYYY");			
+				//item.data_criacao = moment(item.data_criacao).format("DD-MM-YYYY");			
 			});	
 			deffered.resolve(users);
 		});

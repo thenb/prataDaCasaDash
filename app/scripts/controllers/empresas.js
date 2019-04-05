@@ -48,6 +48,34 @@ angular.module('prataAngularApp')
 		});
 		return deffered.promise;
 	}
+
+	function desabilitarEmpre(empresa) {			
+		var params = {  id_empresa : empresa.id };	
+		var deffered  = $q.defer();				
+		Restangular.all('api/desativarEmpre').post(JSON.stringify(params)).then(function(espec) {		
+			if (espec.error) {
+				 deffered.reject(espec.error);
+			}else{
+				deffered.resolve(espec);
+			}
+			
+		});
+		return deffered.promise;
+	}
+
+	function ativarEmpre(empresa) {			
+		var params = {  id_empresa : empresa.id };	
+		var deffered  = $q.defer();				
+		Restangular.all('api/ativarEmpre').post(JSON.stringify(params)).then(function(espec) {		
+			if (espec.error) {
+				 deffered.reject(espec.error);
+			}else{
+				deffered.resolve(espec);
+			}
+			
+		});
+		return deffered.promise;
+	}
 	
 	function getInfoEmpresa(empresa) {			
 		var params = {  id_empresa : empresa.id };	
@@ -107,6 +135,28 @@ angular.module('prataAngularApp')
 	$scope.view = function (empresa) {
 		console.log(empresa);
 		$state.go('empresa', {novo: false, empre: empresa, view: true, edit: false });
+	};
+
+	$scope.changeEmpreStatus = function (empresa) {
+		console.log("Chega aqui?")
+		var statusAtivo = !empresa.status_ativo;
+
+
+		var promise = [];	
+
+		//Deve ativar?
+		if(statusAtivo){
+			promise.push(ativarEmpre(empresa));	
+		//Deve Desativar?
+		}else{		
+			promise.push(desabilitarEmpre(empresa));
+		}		
+	
+		$q.all(promise).then(
+			function() {
+			getAllEmpre();	
+			}	
+		);
 	};
 	
 	$scope.excluir = function(empresa) {

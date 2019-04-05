@@ -60,7 +60,7 @@
 													{{cliente.nomeEmpresa}}
 												</td>
 												<td class="col-xs-5 col-md-2">
-													{{cliente.data_criacao}}
+													{{cliente.data_criacao | date :  "dd/MM/yyyy"}}
 												</td>
 												<td class="hidden-xs col-md-2">
 													{{cliente.cidade}}

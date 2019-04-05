@@ -18,6 +18,7 @@ angular.module('prataAngularApp')
 	$scope.tipoUsuario = $scope.user.login.id_tipo_login;
 	
 	$scope.premios = [];	
+	$scope.campanhas = [];
 	var promises = [];		
 	
 	function init() {		
@@ -33,13 +34,39 @@ angular.module('prataAngularApp')
 		});
 		return deffered.promise;
 	}
+
+	function getAllPremiosByCampanhaId(campanhaSelecionado) {			
+		var params = {  id : campanhaSelecionado.id };	
+		var deffered  = $q.defer();				
+		Restangular.all('api/getAllPremiosByCampanhaId').post(JSON.stringify(params)).then(function(premios) {		
+			if (premios.error) {
+				 deffered.reject(premios.error);
+			}else{			
+				$scope.premios = premios;
+				deffered.resolve(premios);				
+			}			
+		});
+		return deffered.promise;
+	}
 	
 	function getCampanhaAtiva() {			
 		var deffered  = $q.defer();		
 		Restangular.one('api/getDadosCampanhaAtiva').getList().then(function(campanha) {
 			console.log(campanha);
 			$scope.campanhaAtiva = campanha[0];
+			$scope.campanhaSelecionado = campanha[0];
 			deffered.resolve(campanha);
+		});
+		return deffered.promise;
+	}
+
+	function getAllCampanhas() {	
+		console.log('Entra aqui:?')		
+		var deffered  = $q.defer();		
+		Restangular.one('api/getAllCamp').getList().then(function(campanhas) {
+			console.log(campanhas);
+			$scope.campanhas = campanhas;		
+			deffered.resolve(campanhas);
 		});
 		return deffered.promise;
 	}
@@ -105,14 +132,29 @@ angular.module('prataAngularApp')
 				  }				  
 				});
 			  });
-	};	
+	};
+	
+	$scope.changeCampanha = function(campanhaSelecionado) {	
+		var promises = [];	
+		promises.push(getAllPremiosByCampanhaId(campanhaSelecionado));	
+		$q.all(promises).then(function(retorno) {
+			if(retorno[0].type===1){
+				showErrorNotification(retorno[0].msg);
+			}					
+		});
+	};
 	
 	
 	promises.push(getAllPremios());	
 	promises.push(getCampanhaAtiva());	
+	promises.push(getAllCampanhas());
+
+
+
 	
 	$q.all(promises).then(
 		function() {
+		
 			init();		
 		}	
 	);
