@@ -53,17 +53,17 @@
 										<div class="col-md-3">
 											<div ng-class="{'has-error' : (formClientes.data_nascimento.$invalid && formClientes.data_nascimento.$dirty && submited)|| (submited && formClientes.data_nascimento.$pristine),
 											'has-success' : (!formClientes.data_nascimento.$invalid && formClientes.data_nascimento.$dirty)}">
-												<input type="date" class="form-control" name="data_nascimento" id="data_nascimento"  ng-model="cliente1.data_nascimento" ng-disabled="view" >
+												<input type="date" class="form-control" name="data_nascimento" id="data_nascimento"  ng-model="cliente1.data_nascimento" ng-disabled="view" required>
 												<span ng-show="(formClientes.data_nascimento.$invalid && formClientes.data_nascimento.$dirty && submited) || formClientes.data_nascimento.$pristine && submited " class="ng-hide">
 													<p class="error-msg" ng-show="formClientes.data_nascimento.$error.date">Data de nascimento é inválida.</p>
+													<p class="error-msg" ng-show="formClientes.data_nascimento.$error.required">Data de nascimento é Obrigatório.</p>
 												</span>
 											</div>
 										</div>															
 									</div>	
 									<div class="form-group">
 										<label class="col-md-3 control-label" >Indicado por:</label>
-										<div class="col-md-8">
-											
+										<div class="col-md-8">											
 												<angucomplete-alt id="indicou"
 													placeholder="Quem indicou?"
 													initial-value="indicou"
@@ -140,9 +140,10 @@
 										<div class="col-md-2">
 											<div ng-class="{'has-error' : (formClientes.cep.$invalid && formClientes.cep.$dirty && submited)|| (submited && formClientes.cep.$pristine),
 											'has-success' : (!formClientes.cep.$invalid && formClientes.cep.$dirty)}">
-												<input type="text" class="form-control" id="cep" name="cep" mask='99999-999'  ng-model="cliente1.cep" ng-disabled="view">
+												<input type="text" class="form-control" id="cep" name="cep" mask='99999-999'  ng-model="cliente1.cep" ng-disabled="view" required>
 												<span ng-show="(formClientes.cep.$invalid && formClientes.cep.$dirty && submited) || formClientes.cep.$pristine && submited " class="ng-hide">
 													<p class="error-msg" ng-show="formClientes.cep.$error.mask">Cep é inválido.</p>
+													<p class="error-msg" ng-show="formClientes.telefone.$error.required">Cep é Obrigatório.</p>
 												</span>
 											</div>																
 										</div>

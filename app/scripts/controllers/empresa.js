@@ -13,6 +13,9 @@ angular.module('prataAngularApp')
 	var promisesInit = [];	
 	$scope.empresa1 = {};
 	$scope.submited = false;	
+
+	//empresa para guardas as infos para envio de email apos cadastro
+	$scope.empresaTempMail = {};
 	
 	$scope.novo = $state.params.novo;
 	$scope.view = $state.params.view;
@@ -32,6 +35,7 @@ angular.module('prataAngularApp')
 			$scope.operacao = 'Editar';			
 		}		
 		$scope.empresa1 = $state.params.empre;
+		$scope.empresa1.senha = null;
 		console.log($scope.empresa1)
 	}
 	
@@ -49,6 +53,15 @@ angular.module('prataAngularApp')
 		var deffered  = $q.defer();	
 		var params = {  id_empresa : $scope.empresa1.id, nome : $scope.empresa1.nome  };		
 		Restangular.all('api/empresaUpdateNome').post(JSON.stringify(params)).then(function(espec) {					
+			deffered.resolve(espec);			
+		});
+		return deffered.promise;		
+	}
+
+	function editarEmailEmpre() {			
+		var deffered  = $q.defer();	
+		var params = {  id_login : $scope.empresa1.id_login, email : $scope.empresa1.email  };		
+		Restangular.all('api/empresaUpdateEmail').post(JSON.stringify(params)).then(function(espec) {					
 			deffered.resolve(espec);			
 		});
 		return deffered.promise;		
@@ -152,9 +165,7 @@ angular.module('prataAngularApp')
 			deffered.resolve(espec);			
 		});
 		return deffered.promise;
-	}
-	
-	
+	}	
 	
 	function salvarEmpre() {			
 		var deffered  = $q.defer();
@@ -163,16 +174,11 @@ angular.module('prataAngularApp')
 		Restangular.all('api/saveEmpre').post(JSON.stringify(params)).then(function(empre) {					
 			if (empre.error) {
 				 deffered.reject(empre.error);
-			}
-			
-			var email = empre.emailRetorno;
-			var params1 = {  destino : email, assunto: '(Prata da Casa) Cadastro de Empresa', msg : 'Bem-Vindo ao Prata da Casa, sua senha é:'+empre.senhaRetorno};								
-			Restangular.all('api/sendMail').post(JSON.stringify(params1)).then(function(email) {		
-				if (email.error) {
-					 deffered.reject(email.error);
-				}
+			}else{
+				$scope.empresaTempMail = empre;
 				deffered.resolve(empre);
-			});		
+
+			}
 		});
 		return deffered.promise;
 	}
@@ -213,7 +219,18 @@ angular.module('prataAngularApp')
 	}
 	
 	
-	
+	function sendMail(){		
+		var email = $scope.empresaTempMail.emailRetorno;						
+		var params1 = {  destino : email, assunto: '(Prata da Casa) Cadastro de Empresa', msg : 'Bem-Vindo ao Prata da Casa, sua senha é:'+$scope.empresaTempMail.senhaRetorno};								
+		Restangular.all('api/sendMail').post(JSON.stringify(params1)).then(function(email) {		
+			if (email.error) {
+				console.log('Erro ao enviar o email');
+				deffered.reject(email.error);
+			}else{
+				deffered.resolve(email);
+			}				
+		});		
+	} 
 	
 	
 	function showNotification() {
@@ -268,7 +285,8 @@ angular.module('prataAngularApp')
 					if(retorno[0].type===1){
 						showErrorNotification(retorno[0].msg);
 					}else{
-						showNotification();		
+						showNotification();	
+						sendMail();		
 						$state.go('empresas');							
 					}			
 				});
@@ -287,6 +305,10 @@ angular.module('prataAngularApp')
 				if(formEmpre.cep.$dirty){
 					promises.push(editarCep());	
 				}
+
+				if(formEmpre.email.$dirty){
+					promises.push(editarEmailEmpre());	
+				}				
 				
 				if(formEmpre.endereco.$dirty){
 					promises.push(editarEndereco());	

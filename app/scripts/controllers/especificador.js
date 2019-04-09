@@ -13,6 +13,8 @@ angular.module('prataAngularApp')
 	var promisesInit = [];	
 	$scope.especificador1 = {};
 	$scope.submited = false;
+	$scope.especTempMail = {}; 
+
 	
 	function getLoginEspec(especificador) {			
 		var deffered  = $q.defer();	
@@ -234,21 +236,25 @@ angular.module('prataAngularApp')
 			if (espec.error) {
 				 deffered.reject(espec.error);
 			}else{
-				var email = espec.emailRetorno;
-				var params1 = {  destino : email, assunto: '(Prata da Casa) Cadastro', msg : 'Bem-Vindo ao Prata da Casa, sua senha é:'+espec.senhaRetorno};								
-				Restangular.all('api/sendMail').post(JSON.stringify(params1)).then(function(email) {		
-				if (email.error) {
-					 deffered.reject(email.error);
-				}
-				deffered.resolve(espec);
-			});	
-				
-				
-				deffered.resolve(espec);
+				deffered.resolve(espec);	
+				$scope.especTempMail = espec;				
 			}			
 		});
 		return deffered.promise;
 	}
+
+	function sendMail(){	
+		var email = $scope.especTempMail.emailRetorno;						
+		var params1 = {  destino : email, assunto: '(Prata da Casa) Cadastro de Especificador', msg : 'Bem-Vindo ao Prata da Casa, sua senha é:'+$scope.especTempMail.senhaRetorno};								
+		Restangular.all('api/sendMail').post(JSON.stringify(params1)).then(function(email) {		
+			if (email.error) {
+				console.log('Erro ao enviar o email');
+				deffered.reject(email.error);
+			}else{
+				deffered.resolve(email);
+			}				
+		});		
+	} 
 	
 	function showNotification() {
         Notification.success('Especificador cadastrado com sucesso!');
@@ -277,6 +283,7 @@ angular.module('prataAngularApp')
 						showErrorNotification(retorno[0].msg);
 					}else{
 						showNotification();		
+						sendMail();	
 						$state.go('especificadores');							
 					}			
 				});						
@@ -366,7 +373,7 @@ angular.module('prataAngularApp')
 						if(retorno[0].type===1){
 						showErrorNotificationEditar(retorno[0].msg);
 						}else{
-							showNotificationEditar();		
+							showNotificationEditar();									
 							$state.go('especificadores');							
 						}	
 					}								

@@ -14,6 +14,9 @@ angular.module('prataAngularApp')
 	$scope.cliente1 = {};
 	$scope.submited = false;	
 	
+	//variavel para guardar dados para o envio de email
+	$scope.clienteTempMail = {};
+	
 	$scope.view = $state.params.view
 	$scope.novo = $state.params.novo;
 	$scope.edit = $state.params.edit;
@@ -145,7 +148,20 @@ angular.module('prataAngularApp')
 	
 	function showNotification() {
         Notification.success('Cliente cadastrado com sucesso!');
-    }
+		}
+		
+	function sendMail(){		
+		var email = $scope.clienteTempMail.emailRetorno;
+		var params1 = {  destino : email, assunto: '(Prata da Casa) Cadastro de Cliente', msg : 'Bem-Vindo ao Prata da Casa, sua senha é:'+$scope.clienteTempMail.senhaRetorno};								
+		Restangular.all('api/sendMail').post(JSON.stringify(params1)).then(function(email) {		
+			if (email.error) {
+				console.log('Erro ao enviar o email');
+				deffered.reject(email.error);
+			}else{
+				deffered.resolve(email);
+			}				
+		});		
+	} 
 	
 	function showNotificationEditar() {
         Notification.success('Cliente Editado com sucesso!');
@@ -173,22 +189,16 @@ angular.module('prataAngularApp')
 		var cliente = $scope.cliente1;
 		if(typeof $scope.cliente1.data_nascimento !='undefined'){
 			cliente.data_nascimento = moment($scope.cliente1.data_nascimento).format("YYYY-MM-DD");	
-		}
-				
+		}				
 		var params = {  cliente : cliente};	
 		Restangular.all('api/saveCliente').post(JSON.stringify(params)).then(function(espec) {					
 			if (espec.error) {
 				 deffered.reject(espec.error);
+			}else{
+				deffered.resolve(espec);	
+				$scope.clienteTempMail = espec;
 			}	
-			var email = espec.emailRetorno;
-			var params1 = {  destino : email, assunto: '(Prata da Casa) Cadastro de Cliente', msg : 'Bem-Vindo ao Prata da Casa, sua senha é:'+espec.senhaRetorno};								
-			Restangular.all('api/sendMail').post(JSON.stringify(params1)).then(function(email) {		
-				if (email.error) {
-					 deffered.reject(email.error);
-				}else{
-					deffered.resolve(email);
-				}				
-			});			
+
 		});
 		return deffered.promise;
 	}	
@@ -476,7 +486,8 @@ angular.module('prataAngularApp')
 					if(retorno[0].type===1){
 						showErrorNotification(retorno[0].msg);
 					}else{
-						showNotification();		
+						showNotification();	
+						sendMail();					
 						$state.go('clientes');							
 					}			
 				});			
