@@ -44,7 +44,7 @@
   },
   "scripts": {
     "test": "karma start test\\karma.conf.js",
-	"start": ""
+    "start": ""
   },
   "dependencies": {
     "@angular/cli": "^1.6.4",

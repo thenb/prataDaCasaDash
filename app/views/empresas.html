@@ -25,7 +25,7 @@
 												<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-click="novo()" ng-if="tipoUsuario == 1"><i class="fa fa-plus" aria-hidden="true"></i> Novo</button>				
 											</div>
 										</div>
-										<table class="table table-bordered table-striped" show-filter="true">
+										<table class="table table-bordered table-striped" show-filter="true" ng-if="tipoUsuario!=3">
 											<thead>
 											  <tr>
 												<td class="col-xs-4 col-sm-4" style="text-align:center;">
@@ -65,6 +65,56 @@
 													<a ng-if="user.status_ativo==0" style="color:red">Desativada</a></td>
 												<td class="hidden-1 col-sm-1" style="text-align:center;">
 													<a ng-if="tipoUsuario==1 || tipoUsuario==2">{{user.pontosEmpresa}}</a></td>
+												<td class="hidden-1 col-sm-1" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
+													{{user.qtdIndicacoes}}</td>
+												<td class="hidden-1 col-sm-1" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
+													{{user.qtdPresenca}}</td>													
+												<td class="col-xs-6 col-sm-3" style="text-align:center;">													
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  ng-click="view(user)" title="Visualizar" ><i class="fa fa-eye" aria-hidden="true"></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  ng-click="editar(user)" title="Editar" ng-if="tipoUsuario == 1"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  ng-click="changeEmpreStatus(user)" ng-if="tipoUsuario == 1"  title="Ativar/Desativar" ><i class="fa fa-toggle-on" aria-hidden="true"></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  ng-click="excluir(user)" title="Excluir" ng-if="tipoUsuario == 1"><i class="fa fa-minus" aria-hidden="true"></i></i>
+												</td>
+											</tr>
+										</table>
+
+
+
+
+
+										<table class="table table-bordered table-striped" show-filter="true" ng-if="tipoUsuario==3">
+											<thead>
+											  <tr>
+												<td class="col-xs-4 col-sm-5" style="text-align:center;">
+													<a  ng-click="sortType = 'nome'; sortReverse = !sortReverse">
+													Nome
+													<span ng-show="sortType == 'nome'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="hidden-xs col-sm-2" style="text-align:center;">
+													<a  ng-click="sortType = 'segmento'; sortReverse = !sortReverse">
+													Status
+													<span ng-show="sortType == 'segmento'" class="fa fa-caret-down"></span>
+												</td>												
+												<td class="col-xs-1 col-sm-1" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
+													<a  ng-click="sortType = 'qtdIndicacoes'; sortReverse = !sortReverse">
+													Indicações
+													<span ng-show="sortType == 'qtdIndicacoes'" class="fa fa-caret-down" ></span>
+												</td>
+												<td class="col-xs-1 col-sm-1" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
+													<a  ng-click="sortType = 'qtdPresenca'; sortReverse = !sortReverse">
+													Presença
+													<span ng-show="sortType == 'qtdPresenca'" class="fa fa-caret-down"></span>
+												</td>												
+												<td class="col-xs-6 col-sm-3" style="text-align:center;">Ações</td>												
+											  </tr>
+											</thead>
+						
+											<tr ng-repeat="user in empresas | orderBy:sortType:sortReverse| filter:searchFish as filtered">
+												<td class="col-xs-4 col-sm-5">
+													{{user.nome}}</td>
+												<td class="hidden-xs col-sm-2" style="text-align:center;">
+													<a ng-if="user.status_ativo==1" style="color:green">Ativa</a>
+													<a ng-if="user.status_ativo==0" style="color:red">Desativada</a></td>												
 												<td class="hidden-1 col-sm-1" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
 													{{user.qtdIndicacoes}}</td>
 												<td class="hidden-1 col-sm-1" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
