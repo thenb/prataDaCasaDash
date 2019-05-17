@@ -140,10 +140,7 @@ angular.module('prataAngularApp')
 	$scope.changeEmpreStatus = function (empresa) {
 		console.log("Chega aqui?")
 		var statusAtivo = !empresa.status_ativo;
-
-
 		var promise = [];	
-
 		//Deve ativar?
 		if(statusAtivo){
 			promise.push(ativarEmpre(empresa));	
@@ -151,7 +148,6 @@ angular.module('prataAngularApp')
 		}else{		
 			promise.push(desabilitarEmpre(empresa));
 		}		
-	
 		$q.all(promise).then(
 			function() {
 			getAllEmpre();	

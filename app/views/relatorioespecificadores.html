@@ -22,10 +22,10 @@
 												<p class="output" style="padding-top:10px">Total da busca: <b>{{filtered.length}}</b></p>
 											</div>
 											<div class=" col-xs-6 col-sm-6">
-												<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-click="novo()" ng-if="user.login.id_tipo_login==1 || user.login.id_tipo_login==2"><i class="fa fa-plus" aria-hidden="true"></i> Novo</button>				
+												<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-click="exportToExcel('#tabela-especificadores')"	 ng-if="tipoUsuario == 1"><i class="fa fa-plus" aria-hidden="true"></i> Exportar</button>
 											</div>
 										</div>
-										<table class="table table-bordered table-striped" show-filter="true">
+										<table class="table table-bordered table-striped" show-filter="true" id="tabela-especificadores">
 											<thead>
 											  <tr>
 												<td class="col-xs-3 col-sm-3 col-md-2 col-lg-3" style="text-align:center;">
@@ -45,7 +45,7 @@
 												</td>												
 												<td class="hidden-xs col-sm-1 col-md-2 col-lg-1" style="text-align:center;">
 													<a  ng-click="sortType = 'cidade'; sortReverse = !sortReverse">
-													Ativo no Portal
+													Cidade
 													<span ng-show="sortType == 'cidade'" class="fa fa-caret-down"></span>
 												</td>
 												<td class="hidden-xs col-sm-1 col-md-1 col-lg-1"  style="text-align:center;">
@@ -64,14 +64,12 @@
 												<td class="col-sm-3 hidden-xs col-md-2 col-lg-3">
 													{{user.empresa}}</td>												
 												<td class="col-sm-1 hidden-xs col-md-2 col-lg-1">
-													<a ng-if="user.exibir_portal==1" style="color:green">Ativo</a>
-													<a ng-if="user.exibir_portal==0" style="color:red">Não Ativo</a></td>
+													{{user.cidade}}</td>
 												<td class="col-sm-1 hidden-xs col-md-1 col-lg-1"  style="text-align:center;">
 													<a ng-if=" tipoUsuario==1 || tipoUsuario==2">{{user.pontos}}</td>
 												<td class="col-sm-2 col-xs-6 col-md-3 col-lg-2" style="text-align:center;">
 													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="view(user)" title="Visualizar"><i class="fa fa-eye" aria-hidden="true"></i>
 													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="editar(user)" title="Editar" ng-if="tipoUsuario == 2 || tipoUsuario == 1" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  ng-click="ativar(user)" ng-if="tipoUsuario == 1"  title="Ativar/Não Ativar no Portal" ><i class="fa fa-toggle-on" aria-hidden="true"></i>
 													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="excluir(user)" title="Excluir" ng-if="tipoUsuario == 2 || tipoUsuario == 1" ><i class="fa fa-minus" aria-hidden="true"></i>
 												</td>
 											</tr>

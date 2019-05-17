@@ -51,51 +51,14 @@
 	<meta name="msapplication-square150x150logo" content="assets/images/favicons/mstile-150x150.png" />
 	<meta name="msapplication-wide310x150logo" content="assets/images/favicons/mstile-310x150.png" />
 	<meta name="msapplication-square310x310logo" content="assets/images/favicons/mstile-310x310.png" />	
+	</head>
 	
-	
-	
-  </head>
   <body ng-app="prataAngularApp" style="background: #1d2f60!important;">
-
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
-    <!--<div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">teste</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>-->
-	
-
 		<section class="body-sign">
 			<div class="center-sign">
 				<a class="logo pull-left">
 					<img src="assets/images/logo4.png" height="54" alt="Porto Admin" />
 				</a>
-
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
 						<h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i>Login</h2>
@@ -126,7 +89,6 @@
 									</span>
 								</div>
 							</div>
-
 							<div class="row">
 								<div class="col-sm-8">
 									<a href="recover.html" style="color: #337ab7;" class="pull-left">Esqueceu a senha?</a>
@@ -136,28 +98,22 @@
 									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Entrar</button>
 								</div>
 							</div>
-
 							<span class="mt-lg mb-lg line-thru text-center text-uppercase">
 								<span>ou</span>
-							</span>							
-
+							</span>
 							<p class="text-center">Não tem uma conta?<a href="cadastrar.html" style="color: #337ab7;"> Cadastre-se!</a></p>
-
 						</form>
 					</div>
-				</div>
-
-				
+				</div>				
 			</div>
-		</section>
-		
+		</section>		
 	<footer class="navbar-fixed-bottom">
       <div class="container">
         <p class="text-center" style="color:#fff;"><span class="glyphicon glyphicon-heart"></span> Desenvolvido por DNBProject</p>
       </div>
     </footer>
 
-		 <span us-spinner="{radius:30, width:8, length: 16}"></span>     
+		<span us-spinner="{radius:30, width:8, length: 16}"></span>    
 			
 		
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -173,7 +129,7 @@
 		<script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>		
 		<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.js"></script>
 		<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
 		<script src="bower_components/moment/moment.js"></script>
 		<script src='bower_components/ngMask/dist/ngMask.min.js'></script>	
@@ -181,46 +137,46 @@
 		<script src="bower_components/angular-moment/angular-moment.js"></script>	
 		<script src="bower_components/angular-spinner/dist/angular-spinner.min.js"></script>
 		<script src="bower_components/angularMultipleSelect/build/multiple-select.min.js"></script>
+		<script src="bower_components/angular-file-saver/dist/angular-file-saver.js"></script>	
+
 		<script type="text/javascript" src="bower_components/spin.js/spin.js"></script>
 		<script type="text/javascript" src="bower_components/angular-loading-spinner/angular-loading-spinner.js"></script>
 		<script type="text/javascript" src="bower_components/jwt-decode/build/jwt-decode.min.js"></script>
-		<script type="text/javascript" src="bower_components/angucomplete-alt/dist/angucomplete-alt.min.js"></script>
-		
-
+		<script type="text/javascript" src="bower_components/angucomplete-alt/dist/angucomplete-alt.min.js"></script>		
 		
 
 		
 		<!-- Theme Initialization Files -->
-
 		<!--<script src="assets/javascripts/dashboard/examples.dashboard.js"></script>-->
 		<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
 		<script src="bower_components/angular-input-masks/angular-input-masks-standalone.js"></script>
 
-
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>       
+		<!-- build:js({.tmp,app}) scripts/scripts.js -->
+		<script src="scripts/app.js"></script>       
 		<script src="scripts/controllers/especificadores.js"></script>
-        <script src="scripts/controllers/empresas.js"></script>
-        <script src="scripts/controllers/especificador.js"></script>
-        <script src="scripts/controllers/aprovarespecificador.js"></script>
-        <script src="scripts/controllers/clientes.js"></script>
-        <script src="scripts/controllers/pontuacao.js"></script>
-        <script src="scripts/controllers/campanhas.js"></script>
+		<script src="scripts/controllers/empresas.js"></script>
+		<script src="scripts/controllers/especificador.js"></script>
+		<script src="scripts/controllers/aprovarespecificador.js"></script>
+		<script src="scripts/controllers/clientes.js"></script>
+		<script src="scripts/controllers/pontuacao.js"></script>
+		<script src="scripts/controllers/campanhas.js"></script>
 		<script src="scripts/controllers/modal/exclusao.js"></script>
 		<script src="scripts/controllers/modal/aprovar.js"></script>
 		<script src="scripts/controllers/modal/desaprovar.js"></script>
-        <script src="scripts/controllers/empresa.js"></script>
-        <script src="scripts/controllers/campanha.js"></script>
+		<script src="scripts/controllers/empresa.js"></script>
+		<script src="scripts/controllers/campanha.js"></script>
 		<script src="scripts/controllers/login.js"></script>
 		<script src="scripts/controllers/perfil.js"></script>
 		<script src="scripts/controllers/visitas.js"></script>
-        <script src="scripts/controllers/novapontuacao.js"></script>
-        <script src="scripts/controllers/cliente.js"></script>
-        <script src="scripts/controllers/presencas.js"></script>
-        <script src="scripts/controllers/premios.js"></script>
-        <script src="scripts/controllers/premio.js"></script>
-        <script src="scripts/controllers/visitageral.js"></script>
-        <!-- endbuild -->
+		<script src="scripts/controllers/novapontuacao.js"></script>
+		<script src="scripts/controllers/cliente.js"></script>
+		<script src="scripts/controllers/presencas.js"></script>
+		<script src="scripts/controllers/premios.js"></script>
+		<script src="scripts/controllers/premio.js"></script>
+		<script src="scripts/controllers/visitageral.js"></script>
+		<script src="scripts/controllers/relatorioespecificadores.js"></script>
+		<script src="scripts/controllers/relatorioempresas.js"></script>
+		<!-- endbuild -->
 		
 </body>
 </html>
