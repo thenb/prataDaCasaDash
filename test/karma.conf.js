@@ -43,7 +43,7 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-ui-notification/dist/angular-ui-notification.js',
       'bower_components/angular-moment/angular-moment.js',
-      'bower_components/moment-timezone/builds/moment-timezone-with-data-2012-2022.js',
+      'bower_components/moment-timezone/builds/moment-timezone-with-data-10-year-range.min.js',
       'bower_components/angular-datepicker/dist/angular-datepicker.js',
       'bower_components/angular-spinner/dist/angular-spinner.min.js',
       'bower_components/angular-loading-spinner/angular-loading-spinner.js',
