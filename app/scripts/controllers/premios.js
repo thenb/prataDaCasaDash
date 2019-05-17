@@ -12,7 +12,7 @@ angular.module('prataAngularApp')
 	
 	
 	$scope.sortType     = ['pontos']; // set the default sort type
-	$scope.sortReverse  = false;  // set the default sort order
+	$scope.sortReverse  = true;  // set the default sort order
 	$scope.searchFish   = '';     // set the default search/filter term
 	
 	$scope.tipoUsuario = $scope.user.login.id_tipo_login;
