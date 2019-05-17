@@ -11,7 +11,7 @@ angular.module('prataAngularApp')
   .controller('PremiosCtrl',  function (Restangular, $scope, $filter, NgTableParams, $q, ModalService, $state, Notification) {	
 	
 	
-	$scope.sortType     = ['nome']; // set the default sort type
+	$scope.sortType     = ['pontos']; // set the default sort type
 	$scope.sortReverse  = false;  // set the default sort order
 	$scope.searchFish   = '';     // set the default search/filter term
 	
