@@ -67,6 +67,32 @@ angular.module('prataAngularApp')
 		});
 		return deffered.promise;
 	}
+
+	function ativarEspec(espec) {			
+		var params = {  id_espec : espec.id };	
+		var deffered  = $q.defer();				
+		Restangular.all('api/ativarespec').post(JSON.stringify(params)).then(function(espec1) {		
+			if (espec1.error) {
+				 deffered.reject(espec1.error);
+			}else{
+				deffered.resolve(espec1);
+			}			
+		});
+		return deffered.promise;
+	}
+
+	function desativarEspec(espec) {			
+		var params = {  id_espec : espec.id };	
+		var deffered  = $q.defer();				
+		Restangular.all('api/desativarespec').post(JSON.stringify(params)).then(function(espec1) {		
+			if (espec1.error) {
+				 deffered.reject(espec1.error);
+			}else{
+				deffered.resolve(espec1);
+			}			
+		});
+		return deffered.promise;
+	}
 	
 	function showNotification() {
         Notification.success('Especificador excluido com sucesso!');
@@ -88,6 +114,23 @@ angular.module('prataAngularApp')
 	$scope.view = function (espec) {
 		console.log(espec);
 		$state.go('especificador', {novo: false, espec: espec, view: true, edit: false });
+	};
+
+	$scope.ativar = function (espec) {		
+		var statusAtivo = !espec.exibir_portal;
+		var promise = [];	
+		//Deve ativar?
+		if(statusAtivo){
+			promise.push(ativarEspec(espec));	
+		//Deve Desativar?
+		}else{		
+			promise.push(desativarEspec(espec));
+		}		
+		$q.all(promise).then(
+			function() {
+				getAllEspec();	
+			}	
+		);
 	};
 	
 	$scope.excluir = function(especificador) {
