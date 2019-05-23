@@ -25,7 +25,8 @@
 												<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-click="novo()" ng-if="user.login.id_tipo_login==1 || user.login.id_tipo_login==2"><i class="fa fa-plus" aria-hidden="true"></i> Novo</button>				
 											</div>
 										</div>
-										<table class="table table-bordered table-striped" show-filter="true">
+										<!--Tabelas para Administrador-->
+										<table class="table table-bordered table-striped" show-filter="true"  ng-if="tipoUsuario == 1">
 											<thead>
 											  <tr>
 												<td class="col-xs-3 col-sm-3 col-md-2 col-lg-3" style="text-align:center;">
@@ -76,6 +77,87 @@
 												</td>
 											</tr>
 										</table>
+										<!--Tabelas para Empresa/Especificador-->
+										<table class="table table-bordered table-striped" show-filter="true" ng-if="tipoUsuario == 2 || tipoUsuario == 3">
+											<thead>
+											  <tr>
+												<td class="col-xs-3 col-sm-3 col-md-2 col-lg-3" style="text-align:center;">
+													<a  ng-click="sortType = 'nome'; sortReverse = !sortReverse">
+													Nome
+													<span ng-show="sortType == 'nome'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="col-xs-3 col-sm-2 col-md-2 col-lg-3" style="text-align:center;">
+													<a  ng-click="sortType = 'sobrenome'; sortReverse = !sortReverse">
+													Sobrenome
+													<span ng-show="sortType == 'cpf'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="hidden-xs col-sm-3 col-md-2 col-lg-3" style="text-align:center;">
+													<a  ng-click="sortType = 'empresa'; sortReverse = !sortReverse">
+													Empresa
+													<span ng-show="sortType == 'empresa'" class="fa fa-caret-down"></span>
+												</td>												
+												<td class="hidden-xs col-sm-1 col-md-2 col-lg-1"  style="text-align:center;">
+													<a  ng-click="sortType = 'pontos'; sortReverse = !sortReverse">
+													Pontos
+													<span ng-show="sortType == 'pontos'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="col-xs-6 col-sm-3 col-md-4 col-lg-2" style="text-align:center;">Ações</td>												
+											  </tr>
+											</thead>							
+											<tr ng-repeat="user in especificadores | orderBy:sortType:sortReverse| filter:searchFish as filtered">
+												<td class="col-xs-3 col-sm-3 col-md-2 col-lg-3">
+													{{user.nome}}</td>
+												<td class="col-xs-3 col-sm-2 col-md-2 col-lg-3" style="text-align:center;">
+													{{user.sobrenome}}</td>
+												<td class="hidden-xs col-sm-3 col-md-2 col-lg-3">
+													{{user.empresa}}</td>	
+												<td class="col-sm-1 hidden-xs col-md-2 col-lg-1"  style="text-align:center;">
+													<a>{{user.pontos}}</td>
+												<td class="col-sm-3 col-xs-6 col-md-4 col-lg-2" style="text-align:center;">
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="view(user)" title="Visualizar"><i class="fa fa-eye" aria-hidden="true"></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="editar(user)" title="Editar" ng-if="tipoUsuario == 2 || tipoUsuario == 1" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  ng-click="ativar(user)" ng-if="tipoUsuario == 1"  title="Ativar/Não Ativar no Portal" ><i class="fa fa-toggle-on" aria-hidden="true"></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="excluir(user)" title="Excluir" ng-if="tipoUsuario == 2 || tipoUsuario == 1" ><i class="fa fa-minus" aria-hidden="true"></i>
+												</td>
+											</tr>
+										</table>
+										<!--Tabelas para Cliente-->
+										<table class="table table-bordered table-striped" show-filter="true" ng-if="tipoUsuario == 4">
+											<thead>
+											  <tr>
+												<td class="col-xs-3 col-sm-3 col-md-2 col-lg-3" style="text-align:center;">
+													<a  ng-click="sortType = 'nome'; sortReverse = !sortReverse">
+													Nome
+													<span ng-show="sortType == 'nome'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="col-xs-3 col-sm-2 col-md-2 col-lg-2" style="text-align:center;">
+													<a  ng-click="sortType = 'sobrenome'; sortReverse = !sortReverse">
+													Sobrenome
+													<span ng-show="sortType == 'cpf'" class="fa fa-caret-down"></span>
+												</td>
+												<td class="hidden-xs col-sm-3 col-md-2 col-lg-3" style="text-align:center;">
+													<a  ng-click="sortType = 'empresa'; sortReverse = !sortReverse">
+													Empresa
+													<span ng-show="sortType == 'empresa'" class="fa fa-caret-down"></span>
+												</td>	
+												<td class="col-xs-6 col-sm-3 col-md-3 col-lg-2" style="text-align:center;">Ações</td>												
+											  </tr>
+											</thead>							
+											<tr ng-repeat="user in especificadores | orderBy:sortType:sortReverse| filter:searchFish as filtered">
+												<td class="col-xs-3 col-sm-3 col-md-3 col-lg-4">
+													{{user.nome}}</td>
+												<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="text-align:center;">
+													{{user.sobrenome}}</td>
+												<td class="hidden-xs col-sm-3 col-md-3 col-lg-3">
+													{{user.empresa}}</td>
+												<td class="col-xs-6 col-sm-3 col-md-3 col-lg-2" style="text-align:center;">
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="view(user)" title="Visualizar"><i class="fa fa-eye" aria-hidden="true"></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="editar(user)" title="Editar" ng-if="tipoUsuario == 2 || tipoUsuario == 1" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  ng-click="ativar(user)" ng-if="tipoUsuario == 1"  title="Ativar/Não Ativar no Portal" ><i class="fa fa-toggle-on" aria-hidden="true"></i>
+													<button type="button" class="mb-xs mt-xs mr-xs btn btn-default" ng-click="excluir(user)" title="Excluir" ng-if="tipoUsuario == 2 || tipoUsuario == 1" ><i class="fa fa-minus" aria-hidden="true"></i>
+												</td>
+											</tr>
+										</table>										
 										<div class="text-center" ng-if="!especificadores.length">Nenhum especificador cadastrado.</div>	
 									</div>
 									<footer class="panel-footer"></footer>

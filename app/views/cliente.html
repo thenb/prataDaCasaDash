@@ -22,7 +22,7 @@
 									<a href="ui-elements-tabs.html#especificadores" data-toggle="tab"><i class="fa fa-user" aria-hidden="true"></i></i>  Responsáveis da Obra</a>
 								</li>
 								<li>
-									<a href="ui-elements-tabs.html#observacao" data-toggle="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i></i>  Observações</a>
+									<a href="ui-elements-tabs.html#observacao" data-toggle="tab" ng-show="user.login.id_tipo_login!=3 && !novo"><i class="fa fa-file-text-o" aria-hidden="true"></i></i>  Observações</a>
 								</li>
 								<li >
 									<a href="pages-user-profile.html#senha" data-toggle="tab" ng-show="user.login.id_tipo_login==1 && !novo"><i class="fa fa-key Senha" aria-hidden="true"></i> Senha</a>
@@ -331,7 +331,7 @@
 										</div>
 									</div>																																																							
 								</div>	
-								<div id="observacao" class="tab-pane">														
+								<div id="observacao" class="tab-pane" ng-show="user.login.id_tipo_login!=4 && !novo">														
 									<div class="form-group">
 										<label class="col-md-3 control-label" for="inputReadOnly">Observações:</label>
 										<div class="col-md-8">
