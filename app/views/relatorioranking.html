@@ -1,0 +1,87 @@
+					<header class="page-header">
+						<h2> Ranking Especificadores</h2>
+					</header>
+					<!-- start: page -->
+						<div class="row">
+							<div class="col-lg-12">
+								<section class="panel panel-featured">
+									<header class="panel-heading">
+										<h2 class="panel-title"><i class="fa fa-building" aria-hidden="true"></i> Ranking Especificadores</h2>
+									</header>
+									<div class="panel-body">
+										<form>											
+											<div class="form-group">
+												<label class="col-md-2 control-label" for="inputDefault">Campanha:</label>
+												<div class="col-md-3">
+													<select ng-init="campanhaSelecionada = campanhas[0]"  name="campanhas" id="campanhas" ng-options=" campanha.nome for campanha in campanhas track by campanha.id" ng-model="campanhaSelecionada" ng-change="changeCampanha(campanhaSelecionada)">
+														<option value="">Todas</option>
+													</select>	
+												</div>									
+											</div>
+											<!--<div class="form-group">
+												<label class="col-md-2 control-label" for="inputDefault">Empresa:</label>
+												<div class="col-md-3">
+													<select ng-init="empresaSelecionada = empresas[0]"  name="empresas" id="empresas" ng-options=" empresa.nome for empresa in empresas" ng-model="empresaSelecionada" ng-change="changeEmpresa(campanhaSelecionada)">
+														<option value="">Todas</option>
+													</select>
+												</div>
+											</div>	-->									
+										</form>
+										<div class="row" style="padding:15px 0;">
+											<div class="col-xs-6 col-sm-6">
+											<p class="output" style="padding-top:10px">Total da busca: <b>{{filtered.length}}</b></p>
+											</div>
+											<div class="col-xs-6 col-sm-6">	
+												<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-click="exportToExcel('#tabela-empresas')"	 ng-if="tipoUsuario == 1"><i class="fa fa-plus" aria-hidden="true"></i> Exportar</button>		
+												<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-click="filtrar()"><i class="fa fa-plus" aria-hidden="true"></i> Filtrar</button>
+												<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-click="resetar(empresaSelecionada)"><i class="fa fa-plus" aria-hidden="true"></i> Resetar</button>
+											</div>
+										</div>
+										<table class="table table-bordered table-striped" show-filter="true" id="tabela-empresas">
+											<thead>
+											  <tr>
+												<td class="col-sm-1" style="text-align:center;">
+													Ranking
+												</td>
+												<td class="col-sm-2" style="text-align:center;">
+													Nome
+												</td>
+												<td class="col-sm-2" style="text-align:center;">
+													Empresa
+												</td>
+												<td class="col-sm-2" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
+													Profissão
+												</td>
+												<td class="col-sm-2" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
+													Cidade - UF											
+												</td>												
+												<td class="col-sm-3" style="text-align:center;">
+													Pontos
+												</td>												
+											  </tr>
+											</thead>
+						
+											<tr ng-repeat="user in result | orderBy:sortType:sortReverse| filter:searchFish as filtered ">
+												<td class="col-sm-1">
+													{{ $index + 1 }}</td>
+												<td class="col-sm-2" style="text-align:center;">
+													{{user.nome}}</td>
+												<td class="col-sm-2" style="text-align:center;">
+													{{user.empresa}}</td>
+												<td class="col-sm-2" style="text-align:center;">
+													{{user.profissao}}</td>
+												<td class="col-sm-2" style="text-align:center;">
+													{{user.cidade}} - {{user.uf}}</td>													
+												<td class="col-xs-3 col-sm-3" style="text-align:center;">													
+													{{user.pontos}}</td>	
+												</td>
+											</tr>
+										</table>
+										<div class="text-center" ng-if="!empresas.length">Nenhuma empresa cadastrada.</div>
+									</div>
+									<footer class="panel-footer"></footer>
+								</section>								
+							</div>
+						</div>
+			
+					<!-- end: page -->

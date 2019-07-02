@@ -25,7 +25,7 @@
 												
 											</div>
 											<div class=" col-xs-4 col-sm-4">
-													<select class="pull-right" name="mySelect" id="mySelect" ng-options=" campanha.nome for campanha in campanhas track by campanha.id" ng-model="campanhaSelecionado" ng-change="changeCampanha(campanhaSelecionado)"></select>
+												<select class="pull-right" name="mySelect" id="mySelect" ng-options=" campanha.nome for campanha in campanhas track by campanha.id" ng-model="campanhaSelecionado" ng-change="changeCampanha(campanhaSelecionado)"></select>
 												<button type="button" class="mb-xs mt-xs mr-xs btn btn-primary pull-right" ng-click="novo()" ng-if="tipoUsuario==1 || tipoUsuario==2"><i class="fa fa-plus" aria-hidden="true"></i> Novo</button>				
 											</div>
 										</div>

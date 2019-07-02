@@ -233,17 +233,17 @@ var app = angular
 		controller: 'NotificacoesCtrl',
 		controllerAs: 'notificacoes'		
 	})
-	.state('relatorioespecificadores', {
-		url: '/relatorioespecificadores',
-		templateUrl: 'views/relatorioespecificadores.html',
-		controller: 'RelatorioEspecificadoresCtrl',
-		controllerAs: 'relatorioespecificadores'
+	.state('relatoriogeral', {
+		url: '/relatoriogeral',
+		templateUrl: 'views/relatoriogeral.html',
+		controller: 'RelatorioGeralCtrl',
+		controllerAs: 'relatoriogeral'
 	})
-	.state('relatorioempresas', {
-		url: '/relatorioempresas',
-		templateUrl: 'views/relatorioempresas.html',
-		controller: 'RelatorioEmpresasCtrl',
-		controllerAs: 'relatorioempresas'
+	.state('relatorioranking', {
+		url: '/relatorioranking',
+		templateUrl: 'views/relatorioranking.html',
+		controller: 'RelatorioRankingCtrl',
+		controllerAs: 'relatorioranking'
   });	
 	
 	
@@ -344,20 +344,21 @@ var app = angular
 		controller: 'NotificacoesCtrl',
 		controllerAs: 'notificacoes'
 	})
-	.when('/relatorioespecificadores', {		
-		templateUrl: 'views/relatorioespecificadores.html',
-		controller: 'RelatorioEspecificadoresCtrl',
-		controllerAs: 'relatorioespecificadores'
+	.when('/relatoriogeral', {		
+		templateUrl: 'views/relatoriogeral.html',
+		controller: 'RelatorioGeralCtrl',
+		controllerAs: 'relatoriogeral'
 	})
-	.when('/relatorioempresas', {		
-		templateUrl: 'views/relatorioempresas.html',
-		controller: 'RelatorioEmpresasCtrl',
-		controllerAs: 'relatorioempresas'
+	.when('/relatorioranking', {		
+		templateUrl: 'views/relatorioranking.html',
+		controller: 'RelatorioRankingCtrl',
+		controllerAs: 'relatorioranking'
 	})
 	
 	
 	;	
 	
+	//RestangularProvider.setBaseUrl('http://127.0.0.1:9002/');
 	//RestangularProvider.setBaseUrl('https://prata.herokuapp.com/');
 	RestangularProvider.setBaseUrl('http://web.eusoupratadacasa.com.br:9002/');
 	//RestangularProvider.setBaseUrl('http://ec2-18-231-183-60.sa-east-1.compute.amazonaws.com:9002/');
