@@ -82,7 +82,7 @@ angular.module('prataAngularApp')
 		}
 		if($scope.empresaSelecionada){
 			console.log($scope.empresaSelecionada);
-			stringFilter += ' and p.id_usuario =' + $scope.empresaSelecionada.id;
+			stringFilter += ' and e.id =' + $scope.empresaSelecionada.id;
 		}
 		if($scope.especificadorSelecionado){
 			console.log($scope.especificadorSelecionado);
