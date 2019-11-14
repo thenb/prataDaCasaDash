@@ -47,10 +47,10 @@
 													Nome
 												</td>
 												<td class="col-sm-2" style="text-align:center;">
-													Empresa
+													E-mail
 												</td>
 												<td class="col-sm-2" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
-													Profissão
+													Telefone
 												</td>
 												<td class="col-sm-2" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
 													Cidade - UF											
@@ -67,17 +67,16 @@
 												<td class="col-sm-2" style="text-align:center;">
 													{{user.nome}}</td>
 												<td class="col-sm-2" style="text-align:center;">
-													{{user.empresa}}</td>
+													{{user.email_esp}}</td>
 												<td class="col-sm-2" style="text-align:center;">
-													{{user.profissao}}</td>
+													{{user.telefone}}</td>
 												<td class="col-sm-2" style="text-align:center;">
 													{{user.cidade}} - {{user.uf}}</td>													
 												<td class="col-xs-3 col-sm-3" style="text-align:center;">													
 													{{user.pontos}}</td>	
 												</td>
 											</tr>
-										</table>
-										<div class="text-center" ng-if="!empresas.length">Nenhuma empresa cadastrada.</div>
+										</table>										
 									</div>
 									<footer class="panel-footer"></footer>
 								</section>								

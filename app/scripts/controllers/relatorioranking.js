@@ -24,7 +24,7 @@ angular.module('prataAngularApp')
 	$timeout(function(){
 		var a = document.createElement('a');
 		a.href=exportHref;
-		a.download = "Relatório_Empresas.xls";
+		a.download = "Relatório_Ranking.xls";
 		document.body.appendChild(a);
 		a.click();
 		a.remove();}
