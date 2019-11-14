@@ -359,8 +359,8 @@ var app = angular
 	;	
 	
 	//RestangularProvider.setBaseUrl('http://127.0.0.1:9002/');
-	//RestangularProvider.setBaseUrl('https://prata.herokuapp.com/');
-	RestangularProvider.setBaseUrl('http://web.eusoupratadacasa.com.br:9002/');
+	RestangularProvider.setBaseUrl('https://prata.herokuapp.com/');
+	//RestangularProvider.setBaseUrl('http://web.eusoupratadacasa.com.br:9002/');
 	//RestangularProvider.setBaseUrl('http://ec2-18-231-183-60.sa-east-1.compute.amazonaws.com:9002/');
 	
 	
