@@ -50,12 +50,15 @@
 													E-mail
 												</td>
 												<td class="col-sm-2" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
-													Telefone
+													Telefone 1
+												</td>
+												<td class="col-sm-2" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
+													Telefone 2
 												</td>
 												<td class="col-sm-2" ng-if="tipoUsuario==1 || tipoUsuario==2" style="text-align:center;">
 													Cidade - UF											
 												</td>												
-												<td class="col-sm-3" style="text-align:center;">
+												<td class="col-sm-1" style="text-align:center;">
 													Pontos
 												</td>												
 											  </tr>
@@ -71,8 +74,10 @@
 												<td class="col-sm-2" style="text-align:center;">
 													{{user.telefone}}</td>
 												<td class="col-sm-2" style="text-align:center;">
+													{{user.celular}}</td>
+												<td class="col-sm-2" style="text-align:center;">
 													{{user.cidade}} - {{user.uf}}</td>													
-												<td class="col-xs-3 col-sm-3" style="text-align:center;">													
+												<td class="col-xs-1 col-sm-1" style="text-align:center;">													
 													{{user.pontos}}</td>	
 												</td>
 											</tr>
