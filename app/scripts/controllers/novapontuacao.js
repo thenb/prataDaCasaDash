@@ -76,6 +76,7 @@ angular.module('prataAngularApp')
 				modal.element.modal();
 				modal.close.then(function(result) {
 					if(result){
+						console.log('entrou?')
 						var promisseModal = [];
 						promisseModal.push(getAllEspec());
 						$q.all(promisseModal).then(
@@ -101,6 +102,13 @@ angular.module('prataAngularApp')
 				modal.element.modal();
 				modal.close.then(function(result) {
 					if(result){	
+						var promisseModal2 = [];
+						promisseModal2.push(getAllEspec());
+						$q.all(promisseModal2).then(
+							function() {
+								init();		
+							}	
+						);
 						
 					}				  
 				});

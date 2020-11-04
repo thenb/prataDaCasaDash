@@ -1,8 +1,7 @@
 <div class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-				<button type="button" class="close" ng-click="close(false)" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-header">				
                 <h4 class="modal-title">Visualizar Pontuação</h4>
             </div>
             <div class="modal-body">
@@ -10,7 +9,7 @@
 					<table class="table table-bordered table-striped" show-filter="true" >
 						<thead>
 						  <tr>												
-							<td class="col-sm-5" style="text-align:center;">
+							<td class="col-sm-3" style="text-align:center;">
 								<a  ng-click="sortType = 'pontos'; sortReverse = !sortReverse">
 								Empresa
 								<span ng-show="sortType == 'pontos'" class="fa fa-caret-down"></span>
@@ -29,12 +28,17 @@
 								<a  ng-click="sortType = 'observacao'; sortReverse = !sortReverse">
 								Data
 								<span ng-show="sortType == 'observacao'" class="fa fa-caret-down"></span>
-							</td>							
+							</td>	
+							<td class="col-sm-2" style="text-align:center;">
+								<a>
+								Ações
+								<span></span>
+							</td>						
 						  </tr>
 						</thead>
 	
 						<tr  ng-repeat="user in pontuacao | orderBy:sortType:sortReverse| filter:searchFish as filtered">
-							<td class="col-sm-5">
+							<td class="col-sm-3">
 								{{user.nome}}</td>
 							<td class="col-sm-2" style="text-align:center;">
 								{{user.pontos}}</td>
@@ -42,13 +46,16 @@
 								{{user.descricao}}</td>
 							<td class="col-sm-2">
 								{{user.data_criacao}}</td>
+							<td class="col-sm-2" style="text-align:center;">
+								<button type="button" class="mb-xs mt-xs mr-xs btn btn-default"  ng-click="excluir(user)" title="Excluir" ng-if="tipoUsuario == 1"><i class="fa fa-minus" aria-hidden="true"></i></i>
+							</td>
 						</tr>																						
 					</table>
 					<div class="text-center" ng-if="!pontuacao.length">Nenhum ponto registrado.</div>	
 				</div>				
             </div>
             <div class="modal-footer">				
-                <button type="button" ng-click="close(false)" class="btn btn-default" data-dismiss="modal">Cancelar</button>                
+                <button type="button" ng-click="close()" class="btn btn-default" data-dismiss="modal">Cancelar</button>                
             </div>
         </div>
     </div>
