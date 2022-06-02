@@ -50,7 +50,7 @@
     "@angular/cli": "^1.6.4",
     "@angular/compiler": "^5.2.0",
     "@angular/compiler-cli": "^5.2.0",
-    "@angular/core": "^5.2.0",
+    "@angular/core": "^11.0.5",
     "angular": "^1.6.4",
     "angular-bootstrap-datetimepicker": "^1.1.4",
     "angular-datepicker": "^1.0.5",
